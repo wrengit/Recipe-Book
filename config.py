@@ -1,3 +1,9 @@
-class DevConfig(object):
-    SECRET_KEY = 'secret'
+import os
+from os import path
+if path.exists("env.py"):
+    import env
+
+class Config(object):
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    
     DEBUG=True

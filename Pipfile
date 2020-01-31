@@ -8,6 +8,10 @@ autopep8 = "*"
 
 [packages]
 flask = "*"
+flask-login = "*"
+flask-wtf = "*"
+flask-sqlalchemy = "*"
+pymodm = "*"
 
 [requires]
 python_version = "3.8"
