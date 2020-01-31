@@ -10,8 +10,8 @@ autopep8 = "*"
 flask = "*"
 flask-login = "*"
 flask-wtf = "*"
-flask-sqlalchemy = "*"
-pymodm = "*"
+dnspython = "*"
+flask-pymongo = "*"
 
 [requires]
 python_version = "3.8"
