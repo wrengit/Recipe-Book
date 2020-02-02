@@ -10,9 +10,8 @@ from app import login, mongo
 class User():
     def __init__(self, username, email, _id):
         self.username = username
-        self.email=email
-        self._id=_id
-        
+        self.email = email
+        self._id = _id
 
     def is_authenticated(self):
         return True
@@ -29,7 +28,8 @@ class User():
     @staticmethod
     def check_password(password_hash, password):
         return check_password_hash(password_hash, password)
-    
+
+
 @login.user_loader
 def load_user(username):
     user = mongo.db.users.find_one({'username': username})

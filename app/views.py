@@ -7,7 +7,6 @@ from app.forms import UserLoginForm, UserRegistrationForm
 from app.users import User
 
 
-
 @app.route('/')
 @app.route('/index')
 def index():
@@ -38,6 +37,7 @@ def logout():
     logout_user()
     return redirect(url_for('login'))
 
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -45,9 +45,8 @@ def register():
     form = UserRegistrationForm()
     if form.validate_on_submit():
         pwhash = generate_password_hash(form.password.data)
-        user=mongo.db.users.insert_one({'username':form.username.data, 'email':form.email.data,'password':pwhash})
+        user = mongo.db.users.insert_one(
+            {'username': form.username.data, 'email': form.email.data, 'password': pwhash})
         flash('You are now registered')
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
-        
-        
