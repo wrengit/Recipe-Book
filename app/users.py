@@ -1,5 +1,5 @@
 
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import check_password_hash
 from flask_login import UserMixin
 from app import login, mongo
 
@@ -8,9 +8,11 @@ from app import login, mongo
 # https://github.com/boh717/FlaskLogin-and-pymongo
 
 class User():
-    def __init__(self, username, email):
+    def __init__(self, username, email, _id):
         self.username = username
         self.email=email
+        self._id=_id
+        
 
     def is_authenticated(self):
         return True
@@ -27,10 +29,10 @@ class User():
     @staticmethod
     def check_password(password_hash, password):
         return check_password_hash(password_hash, password)
-
+    
 @login.user_loader
 def load_user(username):
-    u = mongo.db.users.find_one({"username": username})
-    if not u:
+    user = mongo.db.users.find_one({'username': username})
+    if not user:
         return None
-    return User(u['username'], u['email'])
+    return User(user['username'], user['email'], user['_id'])
