@@ -3,14 +3,16 @@ from werkzeug.security import generate_password_hash
 from werkzeug.urls import url_parse
 from flask_login import login_user, logout_user, current_user, login_required
 from app import app, mongo
-from app.forms import UserLoginForm, UserRegistrationForm
+from app.forms import UserLoginForm, UserRegistrationForm, RecipeForm
 from app.users import User
 
 
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html')
+    recipes = mongo.db.recipes.find({})
+    return render_template('index.html', recipes=recipes)
+
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -45,8 +47,27 @@ def register():
     form = UserRegistrationForm()
     if form.validate_on_submit():
         pwhash = generate_password_hash(form.password.data)
-        user = mongo.db.users.insert_one(
-            {'username': form.username.data, 'email': form.email.data, 'password': pwhash})
+        mongo.db.users.insert_one({
+            'username': form.username.data,
+            'email': form.email.data,
+            'password': pwhash
+        })
         flash('You are now registered')
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
+
+
+@app.route('/postrecipe', methods=['GET', 'POST'])
+def postrecipe():
+    form = RecipeForm()
+    if form.validate_on_submit():
+        mongo.db.recipes.insert_one({
+            'name': form.recipe_name.data,
+            'desc': form.recipe_desc.data,
+            'ingredients': form.ingredients.data,
+            'method': form.method.data,
+            'owner': current_user._id
+        })
+        flash('Recipe added!')
+        return redirect(url_for('index'))
+    return render_template('add_recipe.html', form=form)

@@ -1,7 +1,16 @@
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
-from wtforms.validators import DataRequired, EqualTo, ValidationError, Email
 from app import mongo
+from wtforms.validators import DataRequired, EqualTo, ValidationError, Email
+from flask_wtf import FlaskForm
+from wtforms import(
+    StringField,
+    PasswordField,
+    SubmitField,
+    BooleanField,
+    FormField,
+    FieldList,
+    IntegerField,
+    TextAreaField
+)
 
 
 class UserLoginForm(FlaskForm):
@@ -29,3 +38,17 @@ class UserRegistrationForm(FlaskForm):
         if user is not None:
             raise ValidationError(
                 'You have already registered! Please login!')
+
+
+class IngredientsForm(FlaskForm):
+    ing_name = StringField('Ingredient', validators=[DataRequired()])
+    ing_amount = IntegerField('Amount', validators=[DataRequired()])
+    ing_unit = StringField('Unit', validators=[DataRequired()])
+
+
+class RecipeForm(FlaskForm):
+    recipe_name = StringField('Recipe name', validators=[DataRequired()])
+    recipe_desc = StringField('Description')
+    ingredients = FieldList(FormField(IngredientsForm), min_entries=2)
+    method = TextAreaField('Method', validators=[DataRequired()])
+    submit = SubmitField('Submit')
