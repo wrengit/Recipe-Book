@@ -5,6 +5,7 @@ from flask_login import login_user, logout_user, current_user, login_required
 from app import app, mongo
 from app.forms import UserLoginForm, UserRegistrationForm, RecipeForm
 from app.users import User
+from bson import ObjectId
 
 
 @app.route('/')
@@ -12,7 +13,6 @@ from app.users import User
 def index():
     recipes = mongo.db.recipes.find({})
     return render_template('index.html', recipes=recipes)
-
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -73,3 +73,34 @@ def postrecipe():
         flash('Recipe added!')
         return redirect(url_for('index'))
     return render_template('add_recipe.html', form=form)
+
+
+@app.route('/editrecipe/<id>', methods=['DELETE', 'GET', 'POST'])
+def editrecipe(id):
+    form = RecipeForm()
+    if request.method == "DELETE":
+        mongo.db.recipes.delete_one({"_id": ObjectId(id)})
+        flash('Recipe Deleted')
+        return redirect(url_for('index'))
+    elif request.method == "POST":
+        if form.validate_on_submit():
+            mongo.db.recipes.update_one({"_id": ObjectId(id)}, {"$set": {
+                'name': form.recipe_name.data,
+                'desc': form.recipe_desc.data,
+                'ingredients': form.ingredients.data,
+                'method': form.method.data,
+                'owner': current_user._id,
+                'tags': form.tags.data
+            }})
+            flash('Recipe Updated')
+            return redirect(url_for('index'))
+    elif request.method == "GET":
+        recipe = mongo.db.recipes.find_one(
+            {"_id": ObjectId(id)})
+        form.recipe_name.data = recipe['name']
+        form.recipe_desc.data = recipe['desc']
+        for ingredient in recipe['ingredients']:
+            form.ingredients.append_entry(data=ingredient)
+        form.method.data = recipe['method']
+        form.tags.data = ', '.join(map(str, recipe['tags']))
+        return render_template('add_recipe.html', form=form)

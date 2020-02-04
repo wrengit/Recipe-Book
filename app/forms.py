@@ -55,7 +55,7 @@ class MultiCheckboxField(SelectMultipleField):
 class RecipeForm(FlaskForm):
     recipe_name = StringField('Recipe name', validators=[DataRequired()])
     recipe_desc = StringField('Description')
-    ingredients = FieldList(StringField(''), min_entries=1)
+    ingredients = FieldList(StringField(''))
     method = TextAreaField('Method', validators=[DataRequired()])
-    tags = MultiCheckboxField(choices=[('cpp', 'C++'), ('py', 'Python'), ('text', 'Plain Text')])
+    tags = MultiCheckboxField(choices=[('vegetarian', 'Vegetarian'), ('vegan', 'Vegan'), ('healthy', 'Healthy'), ('guilty', 'Guilty Pleasure'), ('snack', 'Snack'), ('main', 'Main'), ('dessert', 'Dessert')])
     submit = SubmitField('Submit')

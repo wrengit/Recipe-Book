@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  let ing = 1;
+  let ing = 100;
 
   $("#add_ingredient").click(() => {
     let newLi = $(document.createElement("li"));
