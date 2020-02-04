@@ -50,7 +50,8 @@ def register():
         mongo.db.users.insert_one({
             'username': form.username.data,
             'email': form.email.data,
-            'password': pwhash
+            'password': pwhash,
+            'admin': False
         })
         flash('You are now registered')
         return redirect(url_for('login'))
@@ -66,7 +67,8 @@ def postrecipe():
             'desc': form.recipe_desc.data,
             'ingredients': form.ingredients.data,
             'method': form.method.data,
-            'owner': current_user._id
+            'owner': current_user._id,
+            'tags': form.tags.data
         })
         flash('Recipe added!')
         return redirect(url_for('index'))

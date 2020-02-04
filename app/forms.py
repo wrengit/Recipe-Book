@@ -5,11 +5,12 @@ from wtforms import(
     StringField,
     PasswordField,
     SubmitField,
-    BooleanField,
     FormField,
-    FieldList,
-    IntegerField,
-    TextAreaField
+    TextAreaField,
+    RadioField,
+    SelectMultipleField,
+    FieldList, 
+    widgets
 )
 
 
@@ -39,11 +40,22 @@ class UserRegistrationForm(FlaskForm):
             raise ValidationError(
                 'You have already registered! Please login!')
 
+class MultiCheckboxField(SelectMultipleField):
+    """
+    A multiple-select, except displays a list of checkboxes.
 
+    Iterating the field will produce subfields, allowing custom rendering of
+    the enclosed checkbox fields.
+
+    Example from wtforms documentation
+    """
+    widget = widgets.ListWidget(prefix_label=False)
+    option_widget = widgets.CheckboxInput()
 
 class RecipeForm(FlaskForm):
     recipe_name = StringField('Recipe name', validators=[DataRequired()])
     recipe_desc = StringField('Description')
     ingredients = FieldList(StringField(''), min_entries=1)
     method = TextAreaField('Method', validators=[DataRequired()])
+    tags = MultiCheckboxField(choices=[('cpp', 'C++'), ('py', 'Python'), ('text', 'Plain Text')])
     submit = SubmitField('Submit')
