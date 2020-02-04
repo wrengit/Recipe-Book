@@ -3,7 +3,8 @@ $(document).ready(() => {
 
   $("#add_ingredient").click(() => {
     let newLi = $(document.createElement("li"));
-
+    // creates a new input with id and name to allow wtforms to
+    // recognise the input for correct posting to db.
     newLi
       .after()
       .html(
@@ -20,5 +21,16 @@ $(document).ready(() => {
     newLi.appendTo("#ingredients");
 
     ing++;
+  });
+
+  // binds the event handler to #ingredients, allowing dynamically
+  // generated ingredient inputs to register event.
+  // checks length of input, removing element if empty.
+  $("#ingredients").on("change", "li", e => {
+    if ($(e.target).val().length == 0) {
+      $(e.target)
+        .parent()
+        .remove();
+    }
   });
 });
