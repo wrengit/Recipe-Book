@@ -1,27 +1,22 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<h1>Add recipe</h1>
+<form action="" method="POST">
+  {{ form.hidden_tag() }} {{form.recipe_name.label}}<br />
+  {{form.recipe_name(size=32)}}<br />
+  {{form.recipe_desc.label}}<br />
+  {{form.recipe_desc}}<br />
 
-{% block content %}
-    <h1>Add recipe</h1>
-    <form method = 'POST'>
-        {{ form.hidden_tag() }}
-        <p>
-            {{form.recipe_name.label}}<br>
-            {{form.recipe_name(size=32)}}<br>
-            {{form.recipe_desc.label}}<br>
-            {{form.recipe_desc}}<br>
-        </p>
-        <h2>Ingredients</h2>
-        <p>
-            {{form.ingredients.label}}<br>
-            {{form.ingredients}}<br>
-        </p>
-        <h2>Method</h2>
-        <p>
-            {{form.method.label}}<br>
-            {{form.method}}<br>
-        </p>
-        <p>{{form.submit()}}</p>
-    </form>
+  <h2>Ingredients</h2>
 
+  {{form.ingredients}}<br />
+
+  <button type="button" id="add_ingredient">Add Ingredient</button>
+  <h2>Method</h2>
+
+  {{form.method.label}}<br />
+  {{form.method}}<br />
+
+  {{form.submit()}}
+</form>
 
 {% endblock content %}

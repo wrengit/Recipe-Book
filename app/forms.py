@@ -40,15 +40,10 @@ class UserRegistrationForm(FlaskForm):
                 'You have already registered! Please login!')
 
 
-class IngredientsForm(FlaskForm):
-    ing_name = StringField('Ingredient', validators=[DataRequired()])
-    ing_amount = IntegerField('Amount', validators=[DataRequired()])
-    ing_unit = StringField('Unit', validators=[DataRequired()])
-
 
 class RecipeForm(FlaskForm):
     recipe_name = StringField('Recipe name', validators=[DataRequired()])
     recipe_desc = StringField('Description')
-    ingredients = FieldList(FormField(IngredientsForm), min_entries=2)
+    ingredients = FieldList(StringField(''), min_entries=1)
     method = TextAreaField('Method', validators=[DataRequired()])
     submit = SubmitField('Submit')
