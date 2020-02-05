@@ -1,24 +1,25 @@
-{% extends 'base.html' %}
-
-
-{% block content %}
-
-{%if current_user.is_authenticated%}
-    <h1>Hello {{current_user.username}}</h1>
+{% extends 'base.html' %} {% block content %} {%if
+current_user.is_authenticated%}
+<h1>Hello {{current_user.username}}</h1>
 {%else%}
-    <h1>Hello!</h1>
+<h1>Hello!</h1>
 {% endif %}
 
-<div></div>
-{% for r in recipes %}
-    <div>{{r.name}}</div><br>
-    {{r.desc}}<br>
-    {% for i in r.ingredients %}
-        <p>{{i}}</p>
-    {% endfor %}
-    {{r.method}}
-    <p>Recipe by {{r.owner}}</p>
-{%endfor%}
+<div class="container-fluid">
+  <div class="row">
+    {%for r in recipes %}
 
+    <div class="card col-lg-2 col-sm-5 col-12 mx-auto" style="width: 20px;">
+      <img class="card-img-top" src="..." alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">{{r.name}}</h5>
+        <p class="card-text">{{r.desc}}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+
+    {%endfor%}
+  </div>
+</div>
 
 {% endblock content %}

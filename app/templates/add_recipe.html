@@ -1,24 +1,41 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Add recipe</h1>
-<form action="" method="POST">
-  {{ form.hidden_tag() }} {{form.recipe_name.label}}<br />
-  {{form.recipe_name(size=32)}}<br />
-  {{form.recipe_desc.label}}<br />
-  {{form.recipe_desc}}<br />
 
-  <h2>Ingredients</h2>
+<div class="container">
+  <form action="" method="POST">
+    <div class="row">
+      <div>
+        {{ form.hidden_tag() }}
 
-  {{form.ingredients}}<br />
+        <div>
+          {{form.recipe_name.label}} {{form.recipe_name(class_='bar')}}
+        </div>
 
-  <button type="button" id="add_ingredient">Add Ingredient</button>
-  <h2>Method</h2>
+        <div>
+          {{form.recipe_desc.label}} {{form.recipe_desc}}
+        </div>
 
-  {{form.method.label}}<br />
-  {{form.method(size=32)}}<br />
+        <div>
+          {{form.ingredients.label}} {{form.ingredients}}
+        </div>
+        <br />
+        <a class="btn-floating btn-large waves-effect waves-light red" id="add_ingredient"><i class="material-icons">add</i></a>
+        
+      </div>
 
-  {{form.tags}}<br/>
+      <div>
+        {% for tag in form.tags %}
+        <div class="col s12">
+          <label>{{tag}}<span>{{tag.label}}</span></label>
+        </div>
+        {% endfor %}
+      </div>
 
-  {{form.submit()}}
-</form>
+      <div>
+        {{form.method.label}} {{form.method(size=60)}}
+      </div>
+    </div>
+      {{form.submit}}
+  </form>
+</div>
 
 {% endblock content %}
