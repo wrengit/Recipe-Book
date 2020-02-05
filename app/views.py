@@ -59,6 +59,7 @@ def register():
 
 
 @app.route('/postrecipe', methods=['GET', 'POST'])
+@login_required
 def postrecipe():
     form = RecipeForm()
     if form.validate_on_submit():
@@ -67,7 +68,7 @@ def postrecipe():
             'desc': form.recipe_desc.data,
             'ingredients': form.ingredients.data,
             'method': form.method.data,
-            'owner': current_user._id,
+            'owner': current_user.username,
             'tags': form.tags.data
         })
         flash('Recipe added!')
