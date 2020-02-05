@@ -37,7 +37,7 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('login'))
+    return redirect(url_for('index'))
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -89,7 +89,7 @@ def editrecipe(id):
                 'desc': form.recipe_desc.data,
                 'ingredients': form.ingredients.data,
                 'method': form.method.data,
-                'owner': current_user._id,
+                'owner': current_user.username,
                 'tags': form.tags.data
             }})
             flash('Recipe Updated')
