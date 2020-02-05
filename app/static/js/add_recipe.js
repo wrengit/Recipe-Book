@@ -23,10 +23,10 @@ $(document).ready(() => {
     ing++;
   });
 
-  // binds the event handler to #ingredients, allowing dynamically
+  // delegates the event handler to #ingredients, allowing dynamically
   // generated ingredient inputs to register event.
   // checks length of input, removing element if empty.
-  $("#ingredients").on("change", "li", e => {
+  $("#ingredients").on("keyup", "li", e => {
     if ($(e.target).val().length == 0) {
       $(e.target)
         .parent()
