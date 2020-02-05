@@ -5,9 +5,7 @@ from wtforms import(
     StringField,
     PasswordField,
     SubmitField,
-    FormField,
     TextAreaField,
-    RadioField,
     SelectMultipleField,
     FieldList, 
     widgets
@@ -15,17 +13,17 @@ from wtforms import(
 
 
 class UserLoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
+    username = StringField('Username', validators=[DataRequired('Enter your Username')])
+    password = PasswordField('Password', validators=[DataRequired('Enter your Password')])
     login = SubmitField('Login')
 
 
 class UserRegistrationForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
+    username = StringField('Username', validators=[DataRequired('Please choose a Username')])
+    email = StringField('Email', validators=[DataRequired('Enter your email address'), Email()])
+    password = PasswordField('Password', validators=[DataRequired('Choose a Password')])
     confirm_password = PasswordField('Confirm Password', validators=[
-                                     DataRequired(), EqualTo('password')])
+                                     DataRequired('Please re-type your Password'), EqualTo('password')])
     register = SubmitField('Register')
 
     def validate_username(self, username):
@@ -41,21 +39,14 @@ class UserRegistrationForm(FlaskForm):
                 'You have already registered! Please login!')
 
 class MultiCheckboxField(SelectMultipleField):
-    """
-    A multiple-select, except displays a list of checkboxes.
-
-    Iterating the field will produce subfields, allowing custom rendering of
-    the enclosed checkbox fields.
-
-    Example from wtforms documentation
-    """
-    widget = widgets.ListWidget(prefix_label=False)
+    #Example from wtforms documentation
+    widget = widgets.TableWidget(with_table_tag=True)
     option_widget = widgets.CheckboxInput()
 
 class RecipeForm(FlaskForm):
-    recipe_name = StringField('Recipe name', validators=[DataRequired()])
-    recipe_desc = StringField('Description')
+    recipe_name = StringField('Recipe name', validators=[DataRequired('Enter a recipe name')])
+    recipe_desc = StringField('Description', validators=[DataRequired('Give a short recipe description')])
     ingredients = FieldList(StringField(''))
-    method = TextAreaField('Method', validators=[DataRequired()])
+    method = TextAreaField('Method', validators=[DataRequired('Detail the recipe method')])
     tags = MultiCheckboxField(choices=[('vegetarian', 'Vegetarian'), ('vegan', 'Vegan'), ('healthy', 'Healthy'), ('guilty', 'Guilty Pleasure'), ('snack', 'Snack'), ('main', 'Main'), ('dessert', 'Dessert')])
     submit = SubmitField('Submit')
