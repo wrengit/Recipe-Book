@@ -38,15 +38,11 @@ class UserRegistrationForm(FlaskForm):
             raise ValidationError(
                 'You have already registered! Please login!')
 
-class MultiCheckboxField(SelectMultipleField):
-    #Example from wtforms documentation
-    widget = widgets.TableWidget(with_table_tag=True)
-    option_widget = widgets.CheckboxInput()
 
 class RecipeForm(FlaskForm):
     recipe_name = StringField('Recipe name', validators=[DataRequired('Enter a recipe name')])
     recipe_desc = StringField('Description', validators=[DataRequired('Give a short recipe description')])
     ingredients = FieldList(StringField(''))
     method = TextAreaField('Method', validators=[DataRequired('Detail the recipe method')])
-    tags = MultiCheckboxField(choices=[('vegetarian', 'Vegetarian'), ('vegan', 'Vegan'), ('healthy', 'Healthy'), ('guilty', 'Guilty Pleasure'), ('snack', 'Snack'), ('main', 'Main'), ('dessert', 'Dessert')])
+    tags = SelectMultipleField(choices=[('vegetarian', 'Vegetarian'), ('vegan', 'Vegan'), ('healthy', 'Healthy'), ('guilty', 'Guilty Pleasure'), ('snack', 'Snack'), ('main', 'Main'), ('dessert', 'Dessert')], option_widget = widgets.CheckboxInput())
     submit = SubmitField('Submit')
