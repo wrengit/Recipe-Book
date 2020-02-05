@@ -1,21 +1,24 @@
 {% extends 'base.html' %}
 
 
-{% block content%}
+{% block content %}
 
 {%if current_user.is_authenticated%}
-    <h1>Hello {{current_user.username}}. Your email address is {{current_user.email}} Your ID = {{current_user._id}}</h1>
+    <h1>Hello {{current_user.username}}</h1>
 {%else%}
     <h1>Hello!</h1>
 {% endif %}
 
+<div></div>
 {% for r in recipes %}
-    {{r.name}}<br>
+    <div>{{r.name}}</div><br>
     {{r.desc}}<br>
     {% for i in r.ingredients %}
         <p>{{i}}</p>
     {% endfor %}
     {{r.method}}
-        
-{% endfor %}
+    <p>Recipe by {{r.owner}}</p>
+{%endfor%}
+
+
 {% endblock content %}
