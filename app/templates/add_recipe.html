@@ -2,39 +2,75 @@
 
 <div class="container">
   <form action="" method="POST">
-    <div class="row">
-      <div>
+    <div class="row justify-content-center">
+      <div class="col-10">
         {{ form.hidden_tag() }}
 
-        <div>
-          {{form.recipe_name.label}} {{form.recipe_name(class_='bar')}}
+        <div class="form-group">
+          {{form.recipe_name.label}} {{form.recipe_name(class_="form-control")}}
+          {% for error in form.recipe_name.errors %}
+          <span>[{{error}}]</span>
+          {% endfor %}
+          <small id="recipeNameHelp" class="form-text text-muted"
+            >Enter the name of your recipe</small
+          >
         </div>
 
-        <div>
-          {{form.recipe_desc.label}} {{form.recipe_desc}}
+        <div class="form-group">
+          {{form.recipe_desc.label}} {{form.recipe_desc(class_="form-control")}}
+          {% for error in form.recipe_desc.errors %}
+          <span>[{{error}}]</span>
+          {% endfor %}
+          <small id="recipeDescHelp" class="form-text text-muted"
+            >A brief description of your recipe</small
+          >
         </div>
-
-        <div>
-          {{form.ingredients.label}} {{form.ingredients}}
-        </div>
-        <br />
-        <a class="btn-floating btn-large waves-effect waves-light red" id="add_ingredient"><i class="material-icons">add</i></a>
-        
       </div>
-
-      <div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        {{form.ingredients.label(class_="bmd-label-static")}}
+        {{form.ingredients(class_="list-group list-group-flush")}} {% for error
+        in form.ingredients.errors %}
+        <small id="ingredientError" class="form-text" style="color: red"
+          >{{error}}</small
+        >
+        {% endfor %}
+        <small id="ingredientsHelp" class="form-text text-muted"
+          >Press the
+          <button type="button" class="btn btn-primary" id="add_ingredient">
+            <i class="material-icons">add</i>
+          </button>
+          button to add an ingredient.<br />
+          Remove the ingredient by deleting the text.</small
+        >
+      </div>
+      <!--Make these checkboxes prettier-->
+      <div class="col-2 form-group">
         {% for tag in form.tags %}
-        <div class="col s12">
-          <label>{{tag}}<span>{{tag.label}}</span></label>
+        <div class="form-check">
+          {{tag(class_="form-check-input")}}{{tag.label}}
         </div>
         {% endfor %}
       </div>
-
-      <div>
-        {{form.method.label}} {{form.method(size=60)}}
+    </div>
+    <div class="row justify-content-center">
+      <div class="form-group col-10">
+        {{form.method.label}} {{form.method(class_="form-control")}} {% for
+        error in form.method.errors %}
+        <small id="methodError" class="form-text" style="color:red"
+          >{{error}}</small
+        >
+        {% endfor %}
+        <small id="methodHelp" class="form.text text-muted"
+          >Enter the method. Please use the return/enter key between
+          steps</small
+        >
+      </div>
+      <div class="col-3 align-self-center">
+        {{form.submit(class_="btn btn-primary", style="width: 200px;")}}
       </div>
     </div>
-      {{form.submit}}
   </form>
 </div>
 

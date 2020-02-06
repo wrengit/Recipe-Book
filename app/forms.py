@@ -42,7 +42,7 @@ class UserRegistrationForm(FlaskForm):
 class RecipeForm(FlaskForm):
     recipe_name = StringField('Recipe name', validators=[DataRequired('Enter a recipe name')])
     recipe_desc = StringField('Description', validators=[DataRequired('Give a short recipe description')])
-    ingredients = FieldList(StringField(''))
+    ingredients = FieldList(StringField('', validators=[DataRequired('Enter ingredient')]), render_kw={'class':'list-group list-group-flush'}, validators=[DataRequired('Enter at least one ingredient')])
     method = TextAreaField('Method', validators=[DataRequired('Detail the recipe method')])
     tags = SelectMultipleField(choices=[('vegetarian', 'Vegetarian'), ('vegan', 'Vegan'), ('healthy', 'Healthy'), ('guilty', 'Guilty Pleasure'), ('snack', 'Snack'), ('main', 'Main'), ('dessert', 'Dessert')], option_widget = widgets.CheckboxInput())
     submit = SubmitField('Submit')
