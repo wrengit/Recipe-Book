@@ -35,6 +35,7 @@ def login():
 
 
 @app.route('/logout')
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('index'))
@@ -75,15 +76,26 @@ def postrecipe():
         return redirect(url_for('index'))
     return render_template('add_recipe.html', form=form)
 
-
-@app.route('/editrecipe/<id>', methods=['DELETE', 'GET', 'POST'])
-def editrecipe(id):
-    form = RecipeForm()
-    if request.method == "DELETE":
+#deletes a recipe. Initially this was tried with an ajax (DELETE) call
+# but this threw HTTP 500 errors. 
+#QUESTION? what's the negatives in using a GET req. for this purpose?
+@app.route('/deleterecipe/<id>')
+@login_required
+def delete(id):
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(id)})
+    if current_user.username == recipe['owner']:
         mongo.db.recipes.delete_one({"_id": ObjectId(id)})
         flash('Recipe Deleted')
         return redirect(url_for('index'))
-    elif request.method == "POST":
+    flash('Action not allowed')
+    return redirect(url_for('index'))
+
+
+@app.route('/editrecipe/<id>', methods=['GET', 'POST'])
+@login_required
+def editrecipe(id):
+    form = RecipeForm()
+    if request.method == "POST":
         if form.validate_on_submit():
             mongo.db.recipes.update_one({"_id": ObjectId(id)}, {"$set": {
                 'name': form.recipe_name.data,
