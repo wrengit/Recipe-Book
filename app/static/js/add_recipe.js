@@ -1,6 +1,6 @@
 $(document).ready(() => {
+  let ing = 100; //100 set to ensure no clash with wtform id's
   $("#add_ingredient").click(() => {
-    let ing = 100; //100 set to ensure no clash with wtform id's
     let newLi = $('<li class="list-group-item form-group">');
     // creates a new input with id and name to allow wtforms to
     // recognise the input for correct posting to db.
