@@ -1,15 +1,20 @@
-body { 
-    height: 100vh;
+body {
+  height: 100vh;
 }
 
 #ingredients span {
-    padding-top: 0rem;
+  padding-top: 0rem;
 }
 
 .list-group-item {
-    padding: 0.5rem;
+  padding: 0.5rem;
 }
 
 .card {
-    margin: 1rem;
+  margin: 1rem;
+}
+
+pre {
+  font-family: "Roboto", sans-serif;
+  white-space: pre-wrap;
 }
