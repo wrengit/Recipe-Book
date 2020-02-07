@@ -107,6 +107,8 @@ def editrecipe(id):
             }})
             flash('Recipe Updated')
             return redirect(url_for('index'))
+        return render_template('add_recipe.html', form=form, title='Edit Recipe')
+
     elif request.method == "GET":
         recipe = mongo.db.recipes.find_one(
             {"_id": ObjectId(id)})
