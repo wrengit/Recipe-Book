@@ -44,5 +44,5 @@ class RecipeForm(FlaskForm):
     recipe_desc = StringField('Description', validators=[DataRequired('Give a short recipe description')])
     ingredients = FieldList(StringField('', validators=[DataRequired('Enter ingredient')]), render_kw={'class':'list-group list-group-flush'}, validators=[DataRequired('Enter at least one ingredient')])
     method = TextAreaField('Method', validators=[DataRequired('Detail the recipe method')])
-    tags = SelectMultipleField(choices=[('vegetarian', 'Vegetarian'), ('vegan', 'Vegan'), ('healthy', 'Healthy'), ('snack', 'Snack'), ('main', 'Main'), ('dessert', 'Dessert')], option_widget = widgets.CheckboxInput())
+    tags = SelectMultipleField(choices=[('Vegetarian', 'Vegetarian'), ('Vegan', 'Vegan'), ('Healthy', 'Healthy'), ('Snack', 'Snack'), ('Main', 'Main'), ('Dessert', 'Dessert')], option_widget = widgets.CheckboxInput())
     submit = SubmitField('Submit')
