@@ -74,7 +74,7 @@ def postrecipe():
         })
         flash('Recipe added!')
         return redirect(url_for('index'))
-    return render_template('add_recipe.html', form=form)
+    return render_template('add_recipe.html', form=form, title='Post Recipe')
 
 #deletes a recipe. Initially this was tried with an ajax (DELETE) call
 # but this threw HTTP 500 errors. 
@@ -116,4 +116,4 @@ def editrecipe(id):
             form.ingredients.append_entry(data=ingredient)
         form.method.data = recipe['method']
         form.tags.data = ', '.join(map(str, recipe['tags']))
-        return render_template('add_recipe.html', form=form)
+        return render_template('add_recipe.html', form=form, title='Edit Recipe')

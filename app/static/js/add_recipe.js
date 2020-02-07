@@ -4,13 +4,14 @@ $(document).ready(() => {
     let newLi = $('<li class="list-group-item form-group">');
     // creates a new input with id and name to allow wtforms to
     // recognise the input for correct posting to db.
+    // autocomplete=off and type=search stop browser from messing with form style
     newLi
       .after()
       .html(
         '<label for="ingredients-' +
           ing +
           '"></label>' +
-          '<span class="bmd-group-item is-filled"><input class="form-control form-control-sm" type="text" name="ingredients-' +
+          '<span class="bmd-group-item is-filled"><input class="form-control form-control-sm" type="search" autocomplete="off" name="ingredients-' +
           ing +
           '" id="ingredients-' +
           ing +
@@ -37,9 +38,12 @@ $(document).ready(() => {
   $("#ingredients")
     .children()
     .addClass("list-group-item form-group");
+  //attr stops browser autocomplete which messes up the form styling
   $("li.list-group-item")
     .find("input")
-    .addClass("form-control form-control-sm");
+    .addClass("form-control form-control-sm")
+    .attr("autocomplete", "off")
+    .attr("type", "search");
 
   //https://stackoverflow.com/questions/895171/prevent-users-from-submitting-a-form-by-hitting-enter
   //stops user from submitting form by pressing enter, unless

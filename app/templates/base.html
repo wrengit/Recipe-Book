@@ -15,6 +15,7 @@
       href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
     />
     <link rel="stylesheet" href="../static/css/main.css" />
+    <link rel="stylesheet" href="../static/css/add_recipe.css" />
     <title>Document</title>
     {% with messages = get_flashed_messages() %} {% if messages %}
     <ul class="flashes">
@@ -35,7 +36,7 @@
 
     {% block content %} {% endblock content %}
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
     <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
     <script>
@@ -44,5 +45,6 @@
       });
     </script>
     <script src="../static/js/add_recipe.js"></script>
+    <script src="../static/js/index.js"></script>
   </body>
 </html>
