@@ -1,3 +1,15 @@
+//Sets initial class names for tags divs (add_recipe.html) depending
+//on initial window size.
+$(window).on("load", e => {
+  if ($(e.target).width() > 576) {
+    $(".tags-div").addClass("checkbox");
+    $("#tags-container").addClass("col form-group mt-4 bmd-form-group");
+  } else {
+    $(".tags-div").addClass("col-4 pt2");
+    $("#tags-container").addClass("row mx-4");
+  }
+});
+
 $(document).ready(() => {
   let ing = 100; //100 set to ensure no clash with wtform id's
   $("#add_ingredient").click(() => {
@@ -38,19 +50,40 @@ $(document).ready(() => {
   $("#ingredients")
     .children()
     .addClass("list-group-item form-group");
-  //attr stops browser autocomplete which messes up the form styling
   $("li.list-group-item")
     .find("input")
     .addClass("form-control form-control-sm")
-    .attr("autocomplete", "off")
+    .attr("autocomplete", "off") //stops browser autocomplete which messes up the form styling
     .attr("type", "search");
 
   //https://stackoverflow.com/questions/895171/prevent-users-from-submitting-a-form-by-hitting-enter
   //stops user from submitting form by pressing enter, unless
-  //in a text area or on a button.
+  //in a text area or on a button. This was found to happen in testing
+  //when navigating add_recipe.html
   $(document).on("keydown", ":input:not(textarea):not(:submit)", e => {
     if (e.key == "Enter") {
       e.preventDefault();
+    }
+  });
+
+  //layout of the tags section in add_recipe.html requires divs to have different class
+  //names. This function changes class names based on the window being resiez by user.
+  //Initial class names are provided at the top of this file, outside the document.ready func.
+  $(window).on("resize", e => {
+    if ($(e.target).width() > 576) {
+      $(".tags-div")
+        .removeClass("col-4 pt2")
+        .addClass("checkbox");
+      $("#tags-container")
+        .removeClass("row mx-4")
+        .addClass("col form-group mt-4 bmd-form-group");
+    } else {
+      $(".tags-div")
+        .removeClass("checkbox")
+        .addClass("col-4 pt-2");
+      $("#tags-container")
+        .removeClass("col form-group mt-4 bmd-form-group")
+        .addClass("row mx-4");
     }
   });
 });
