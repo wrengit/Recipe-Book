@@ -1,12 +1,12 @@
 //Sets initial class names for tags divs (add_recipe.html) depending
 //on initial window size.
 $(window).on("load", e => {
-  if ($(e.target).width() > 576) {
+  if ($(e.target).width() > 760) {
     $(".tags-div").addClass("checkbox");
-    $("#tags-container").addClass("col form-group mt-4 bmd-form-group");
+    $("#tags-container").addClass("col-3 form-group mt-4 bmd-form-group");
   } else {
     $(".tags-div").addClass("col-4 pt2");
-    $("#tags-container").addClass("row mx-4");
+    $("#tags-container").addClass("row mx-4 px-sm-5");
   }
 });
 
@@ -70,19 +70,19 @@ $(document).ready(() => {
   //names. This function changes class names based on the window being resiez by user.
   //Initial class names are provided at the top of this file, outside the document.ready func.
   $(window).on("resize", e => {
-    if ($(e.target).width() > 576) {
+    if ($(e.target).width() > 760) {
       $(".tags-div")
         .removeClass("col-4 pt2")
         .addClass("checkbox");
       $("#tags-container")
         .removeClass("row mx-4")
-        .addClass("col form-group mt-4 bmd-form-group");
+        .addClass("col-3 form-group mt-4 bmd-form-group");
     } else {
       $(".tags-div")
         .removeClass("checkbox")
         .addClass("col-4 pt-2");
       $("#tags-container")
-        .removeClass("col form-group mt-4 bmd-form-group")
+        .removeClass("col-3 form-group mt-4 bmd-form-group")
         .addClass("row mx-4");
     }
   });
