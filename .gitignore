@@ -1,9 +1,5 @@
 env.py
 .vscode
 __pycache__
-node_modules
-babel_preprocess.txt
-package-lock.json
-package.json
 wireframe.pdf
 projects.txt
