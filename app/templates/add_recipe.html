@@ -1,82 +1,80 @@
 {% extends 'base.html' %} {% block content %}
-  <div class="container mx-auto">
-    <form action="" method="POST">
-      <div class="card" id="edit-post-recipe">
-        <div class="row justify-content-center">
-          <div class="col-10">
-            {{ form.hidden_tag() }}
-            <h1 class="card-title pt-5">{{title}}</h1>
+<div class="container mx-auto">
+  <form action="" method="POST">
+    <div class="card" id="edit-post-recipe">
+      <div class="row justify-content-center">
+        <div class="col-10">
+          {{ form.hidden_tag() }}
+          <h1 class="card-title pt-5">{{title}}</h1>
 
-            <div class="form-group">
-              {{form.recipe_name.label(class_="bmd-label-floating")}}
-              {{form.recipe_name(class_="form-control", autocomplete="off", type="search")}} {% for
-              error in form.recipe_name.errors %}
-              <span>[{{error}}]</span>
-              {% endfor %}
-              <small id="recipeNameHelp" class="bmd-help"
-                >Enter the name of your recipe</small
+          <div class="form-group">
+            {{form.recipe_name.label(class_="bmd-label-floating")}}
+            {{form.recipe_name(class_="form-control", autocomplete="off",
+            type="search")}} {% for error in form.recipe_name.errors %}
+            <span>[{{error}}]</span>
+            {% endfor %}
+            <small id="recipeNameHelp" class="bmd-help"
+              >Enter the name of your recipe</small
+            >
+          </div>
+
+          <div class="form-group">
+            {{form.recipe_desc.label(class_="bmd-label-floating")}}
+            {{form.recipe_desc(class_="form-control", autocomplete="off",
+            type="search")}} {% for error in form.recipe_desc.errors %}
+            <span>[{{error}}]</span>
+            {% endfor %}
+            <small id="recipeDescHelp" class="bmd-help"
+              >A brief description of your recipe</small
+            >
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center pt-4">
+        <!--Ingredients section-->
+        <div class="col-12 col-md-7 mb-5 align-items-center">
+          {{form.ingredients.label(class_="bmd-label-floating pl-5",
+          id="main-ingredients-label")}} {{form.ingredients(class_="list-group
+          list-group-flush align-item-center pr-5")}} {% for error in
+          form.ingredients.errors %}
+          <small id="ingredientError" class="form-text" style="color: red"
+            >{{error}}</small
+          >
+          {% endfor %}
+          <div class="row mt-5 justify-content-center">
+            <div class="col-2 ml-4">
+              <button
+                type="button"
+                class="btn btn-primary bmd-btn-fab bmd-btn-fab-sm"
+                id="add_ingredient"
               >
+                <i class="material-icons">add</i>
+              </button>
             </div>
-
-            <div class="form-group">
-              {{form.recipe_desc.label(class_="bmd-label-floating")}}
-              {{form.recipe_desc(class_="form-control", autocomplete="off", type="search")}} {% for
-              error in form.recipe_desc.errors %}
-              <span>[{{error}}]</span>
-              {% endfor %}
-              <small id="recipeDescHelp" class="bmd-help"
-                >A brief description of your recipe</small
+            <div class="col-8 col-sm-7">
+              <small id="ingredientsHelp" class="form-text text-muted"
+                >Press the button to add an ingredient.<br />
+                Remove the ingredient by deleting the text.</small
               >
             </div>
           </div>
         </div>
-        <div class="row justify-content-center pt-4">
-          <!--Ingredients section-->
-          <div
-            class="col-12 col-md-7 mb-5 align-items-center"
-          >
-            {{form.ingredients.label(class_="bmd-label-floating pl-5",
-            id="main-ingredients-label")}}
-            {{form.ingredients(class_="list-group
-            list-group-flush align-item-center pr-5")}} {% for error in form.ingredients.errors %}
-            <small id="ingredientError" class="form-text" style="color: red"
-              >{{error}}</small
-            >
-            {% endfor %}
-            <div class="row mt-5 justify-content-center">
-              <div class="col-2 ml-4">
-                <button
-                  type="button"
-                  class="btn btn-primary bmd-btn-fab bmd-btn-fab-sm"
-                  id="add_ingredient"
-                >
-                  <i class="material-icons">add</i>
-                </button>
-              </div>
-              <div class="col-8 col-sm-7">
-                <small id="ingredientsHelp" class="form-text text-muted"
-                  >Press the button to add an ingredient.<br />
-                  Remove the ingredient by deleting the text.</small
-                >
-              </div>
-            </div>
-          </div>
-          <!--Tags section-->
-          <div id="tags-container">
-            {% for tag in form.tags %}
-            <div class="tags-div">
-              <label class="checkbox-inline">
-                <!--classes for formatting are all applied after page loads in add_recipe.js
+        <!--Tags section-->
+        <div id="tags-container">
+          {% for tag in form.tags %}
+          <div class="tags-div">
+            <label class="checkbox-inline">
+              <!--classes for formatting are all applied after page loads in add_recipe.js
                 classes depend on initial window load size, and apply a different set of classses
                 when the window is resized. #tags-container (single unique element) & 
                 .tags-div(class given to all elements after jinja template render) are used to target these elements-->
-                {{tag}}{{tag.label}}
-              </label>
-            </div>
-            {% endfor %}
+              {{tag}}{{tag.label}}
+            </label>
           </div>
-      </div>    
-        <!--Method section-->
+          {% endfor %}
+        </div>
+      </div>
+      <!--Method section-->
       <div class="row justify-content-center mt-3">
         <div class="form-group col-10">
           {{form.method.label(class_="bmd-label-floating")}}
@@ -91,13 +89,15 @@
             steps</small
           >
         </div>
-        <!--Submit button-->
+      </div>
+      <!--Submit button-->
+      <div class="row">
         <div class="col-12 text-center my-5">
           {{form.submit(class_="btn btn-raised btn-success")}}
         </div>
       </div>
-      
-    </form>
-  </div>
+    </div>
+  </form>
+</div>
 
 {% endblock content %}
