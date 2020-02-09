@@ -10,10 +10,6 @@ body {
   padding: 0.5rem;
 }
 
-.card {
-  margin: 1rem;
-}
-
 pre {
   font-family: "Roboto", sans-serif;
   white-space: pre-wrap;
@@ -21,4 +17,15 @@ pre {
 
 .modal {
   padding-left: 0;
+}
+
+/*https://stackoverflow.com/questions/23400232/force-bootstrap-responsive-image-to-be-square*/
+.image-square{
+  position:relative;
+  overflow:hidden;
+  padding-bottom:100%;
+}
+
+.image-square img{
+  position:absolute;
 }

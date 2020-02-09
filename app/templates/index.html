@@ -5,77 +5,82 @@
   <div class="row">
     {%for r in recipes %}
     <!--recipe card displayed on index.html-->
-    <div class="card col-lg-3 col-sm-5 col-12" style="width: 20px;">
-      <!--https://stackoverflow.com/questions/980855/inputting-a-default-
-        image-in-case-the-src-attribute-of-an-html-img-is-not-vali-->
-      <img class="card-img-top image-fallback" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
-      <div class="card-body">
-        <h5 class="card-title">{{r.name}}</h5>
-        <p class="card-text">{{r.desc}}</p>
-      </div>
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-toggle="modal"
-        data-target=".{{r._id}}"
-      >
-        Large modal
-      </button>
-    </div>
-    <!--recipe modal-->
-    <div
-      class="modal fade {{r._id}}"
-      tabindex="-1"
-      role="dialog"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="card-body">
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <h5 class="card-title">{{r.name}}</h5>
-
-            <p class="card-text">{{r.desc}}</p>
-
-            <div>
-              {% for tag in r.tags %}
-
-              <span>
-                <div><i class="material-icons">done</i></div>
-                <div>{{tag}}</div>
-              </span>
-
-             {% endfor %}
-            </div>
-
-            
-              <ul class="list-group list-group-flush">
-                {% for i in r.ingredients %}
-                <li class="list-group-item">{{i}}</li>
-                {% endfor %}
-              </ul>
-           
-              <pre>{{r.method}}</pre>
-            </div>
-
-            {% if r.owner == current_user.username or current_user.is_admin %}
-            <a
-              href="{{url_for('editrecipe', id=(r._id))}}"
-              class="btn btn-primary"
-              >Edit Recipe</a
+    <div class="col-lg-3 col-sm-5 col-12">
+      <div class="card my-1">
+        <!--https://stackoverflow.com/questions/980855/inputting-a-default-
+          image-in-case-the-src-attribute-of-an-html-img-is-not-vali-->
+        <div class="image-square">
+          <img class="card-img-top image-fluid" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{r.name}}</h5>
+        
+        </div>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target=".{{r._id}}"
+        >
+          View recipe
+        </button>
+         <!--recipe modal-->
+        <div
+        class="modal fade {{r._id}}"
+        tabindex="-1"
+        role="dialog"
+        aria-hidden="true"
+        >
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <img class="card-img-top image-fluid" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
+            <div class="card-body">
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
               >
-            <button class="btn btn-warning recipe-delete-confirm" data-id={{r._id}}>Delete Recipe</button>
-            {% endif %}
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h3 class="card-title">{{r.name}}</h5>
+
+              <p class="card-text">{{r.desc}}</p>
+
+              <div>
+                {% for tag in r.tags %}
+
+                <span>
+                  <div><i class="material-icons">done</i></div>
+                  <div>{{tag}}</div>
+                </span>
+
+              {% endfor %}
+              </div>
+                <h6 class="card-title">Ingredients</h6>
+                <ul class="list-group list-group-flush">
+                  {% for i in r.ingredients %}
+                  <li class="list-group-item">{{i}}</li>
+                  {% endfor %}
+                </ul>
+                <h6 class="card-title">Method</h6>
+                <pre>{{r.method}}</pre>
+              </div>
+
+              {% if r.owner == current_user.username or current_user.is_admin %}
+              <a
+                href="{{url_for('editrecipe', id=(r._id))}}"
+                class="btn btn-primary"
+                >Edit Recipe</a
+                >
+              <button class="btn btn-warning recipe-delete-confirm" data-id={{r._id}}>Delete Recipe</button>
+              {% endif %}
+            </div>
           </div>
         </div>
       </div>
+    </div>
+   
     
     
     {%endfor%}
