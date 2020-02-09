@@ -62,7 +62,7 @@
               <pre>{{r.method}}</pre>
             </div>
 
-            {% if r.owner == current_user.username %}
+            {% if r.owner == current_user.username or current_user.is_admin %}
             <a
               href="{{url_for('editrecipe', id=(r._id))}}"
               class="btn btn-primary"

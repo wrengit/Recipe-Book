@@ -23,7 +23,7 @@ def login():
     if form.validate_on_submit():
         user = mongo.db.users.find_one({'username': form.username.data})
         if user and User.check_password(user['password'], form.password.data):
-            user_obj = User(user['username'], user['email'], user['_id'])
+            user_obj = User(user['username'], user['email'], user['_id'], user['is_admin'])
             login_user(user_obj)
             next_page = request.args.get('next')
             if not next_page or url_parse(next_page).netloc != '':
@@ -52,7 +52,7 @@ def register():
             'username': form.username.data,
             'email': form.email.data,
             'password': pwhash,
-            'admin': False
+            'is_admin': False
         })
         flash('You are now registered')
         return redirect(url_for('login'))
@@ -83,7 +83,7 @@ def postrecipe():
 @login_required
 def delete(id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(id)})
-    if current_user.username == recipe['owner']:
+    if current_user.username == recipe['owner'] or current_user.is_admin:
         mongo.db.recipes.delete_one({"_id": ObjectId(id)})
         flash('Recipe Deleted')
         return redirect(url_for('index'))

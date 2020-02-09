@@ -8,10 +8,12 @@ from app import login, mongo
 # https://github.com/boh717/FlaskLogin-and-pymongo
 
 class User():
-    def __init__(self, username, email, _id):
+    def __init__(self, username, email, _id, is_admin):
         self.username = username
         self.email = email
         self._id = _id
+        self.is_admin = is_admin
+        
 
     def is_authenticated(self):
         return True
@@ -35,4 +37,4 @@ def load_user(username):
     user = mongo.db.users.find_one({'username': username})
     if not user:
         return None
-    return User(user['username'], user['email'], user['_id'])
+    return User(user['username'], user['email'], user['_id'], user['is_admin'])
