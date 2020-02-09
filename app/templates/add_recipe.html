@@ -2,6 +2,7 @@
 <div class="container mx-auto">
   <form action="" method="POST">
     <div class="card" id="edit-post-recipe">
+      <!--Name/description section-->
       <div class="row justify-content-center">
         <div class="col-10">
           {{ form.hidden_tag() }}
@@ -30,8 +31,8 @@
           </div>
         </div>
       </div>
+      <!--Ingredients section-->
       <div class="row justify-content-center pt-4">
-        <!--Ingredients section-->
         <div class="col-12 col-md-7 mb-5 align-items-center">
           {{form.ingredients.label(class_="bmd-label-floating pl-5",
           id="main-ingredients-label")}} {{form.ingredients(class_="list-group
@@ -87,6 +88,16 @@
           <small id="methodHelp" class="bmd-help"
             >Enter the method. Please use the return/enter key between
             steps</small
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-12">
+          {{form.image.label(class_="bmd-label-floating")}}
+          {{form.image(class_="form-control", autocomplete="off")}}
+          <small id="imageHelp" class="bmd-help"
+            >Link to an image for this recipe. We do not host images, please use
+            your favorit image hosting service</small
           >
         </div>
       </div>

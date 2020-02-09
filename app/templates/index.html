@@ -6,6 +6,9 @@
     {%for r in recipes %}
     <!--recipe card displayed on index.html-->
     <div class="card col-lg-3 col-sm-5 col-12" style="width: 20px;">
+      <!--https://stackoverflow.com/questions/980855/inputting-a-default-
+        image-in-case-the-src-attribute-of-an-html-img-is-not-vali-->
+      <img class="card-img-top image-fallback" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
       <div class="card-body">
         <h5 class="card-title">{{r.name}}</h5>
         <p class="card-text">{{r.desc}}</p>

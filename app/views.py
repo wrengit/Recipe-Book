@@ -70,7 +70,8 @@ def postrecipe():
             'ingredients': form.ingredients.data,
             'method': form.method.data,
             'owner': current_user.username,
-            'tags': form.tags.data
+            'tags': form.tags.data,
+            'image': form.image.data
         })
         flash('Recipe added!')
         return redirect(url_for('index'))
@@ -103,7 +104,8 @@ def editrecipe(id):
                 'ingredients': form.ingredients.data,
                 'method': form.method.data,
                 'owner': current_user.username,
-                'tags': form.tags.data
+                'tags': form.tags.data,
+                'image': form.image.data
             }})
             flash('Recipe Updated')
             return redirect(url_for('index'))
@@ -117,5 +119,6 @@ def editrecipe(id):
         for ingredient in recipe['ingredients']:
             form.ingredients.append_entry(data=ingredient)
         form.method.data = recipe['method']
+        form.image.data = recipe['image']
         form.tags.data = ', '.join(map(str, recipe['tags']))
         return render_template('add_recipe.html', form=form, title='Edit Recipe')
