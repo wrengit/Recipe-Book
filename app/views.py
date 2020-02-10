@@ -8,11 +8,14 @@ from app.users import User
 from bson import ObjectId
 
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 def index():
+    search_form = SearchForm()
     recipes = mongo.db.recipes.find({})
-    return render_template('index.html', recipes=recipes)
+    if request.method == 'POST':
+        return redirect(url_for('search_results', ingredient=search_form.search.data))
+    return render_template('index.html', recipes=recipes, form=search_form)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -125,17 +128,15 @@ def editrecipe(id):
         return render_template('add_recipe.html', form=form, title='Edit Recipe')
 
 
-@app.route('/search', methods=['GET', 'POST'])
-def search():
-    form = SearchForm()
-    if request.method == 'POST':
-        return redirect(url_for('search_results', ingredient=form.search.data))
-    return render_template('search.html', form=form)
-
-
-@app.route('/search_results/<ingredient>')
+@app.route('/search_results/<ingredient>', methods=['GET', 'POST'])
 def search_results(ingredient):
+    search_form = SearchForm()
     recipes = list(mongo.db.recipes.find({'$text': {'$search': ingredient}}))
-    if recipes:
-        return render_template('search_results.html', recipes=recipes, ingredient=ingredient)
-    return render_template('none_found.html')
+    if request.method == 'GET':
+        if recipes:
+            return render_template('search_results.html', recipes=recipes, ingredient=ingredient, form=search_form)
+        return render_template('none_found.html', form=search_form)
+    elif request.method == 'POST':
+        return redirect(url_for('search_results', ingredient=search_form.search.data))
+    return render_template('index.html', recipes=recipes, form=search_form)
+        
