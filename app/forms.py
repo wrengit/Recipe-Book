@@ -47,3 +47,7 @@ class RecipeForm(FlaskForm):
     tags = SelectMultipleField(choices=[('Vegetarian', 'Vegetarian'), ('Vegan', 'Vegan'), ('Healthy', 'Healthy'), ('Snack', 'Snack'), ('Main', 'Main'), ('Dessert', 'Dessert')], option_widget = widgets.CheckboxInput())
     image = StringField('Add image link')
     submit = SubmitField('Submit')
+
+class SearchForm(FlaskForm):
+    search = StringField('Search for ingredient', validators=[DataRequired('Enter an ingredient to search for')])
+    submit = SubmitField('Submit')

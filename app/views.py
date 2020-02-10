@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash
 from werkzeug.urls import url_parse
 from flask_login import login_user, logout_user, current_user, login_required
 from app import app, mongo
-from app.forms import UserLoginForm, UserRegistrationForm, RecipeForm
+from app.forms import UserLoginForm, UserRegistrationForm, RecipeForm, SearchForm
 from app.users import User
 from bson import ObjectId
 
@@ -23,7 +23,8 @@ def login():
     if form.validate_on_submit():
         user = mongo.db.users.find_one({'username': form.username.data})
         if user and User.check_password(user['password'], form.password.data):
-            user_obj = User(user['username'], user['email'], user['_id'], user['is_admin'])
+            user_obj = User(user['username'], user['email'],
+                            user['_id'], user['is_admin'])
             login_user(user_obj)
             next_page = request.args.get('next')
             if not next_page or url_parse(next_page).netloc != '':
@@ -77,9 +78,9 @@ def postrecipe():
         return redirect(url_for('index'))
     return render_template('add_recipe.html', form=form, title='Post Recipe')
 
-#deletes a recipe. Initially this was tried with an ajax (DELETE) call
-# but this threw HTTP 500 errors. 
-#QUESTION? what's the negatives in using a GET req. for this purpose?
+# deletes a recipe. Initially this was tried with an ajax (DELETE) call
+# but this threw HTTP 500 errors.
+# QUESTION? what's the negatives in using a GET req. for this purpose?
 @app.route('/deleterecipe/<id>')
 @login_required
 def delete(id):
@@ -122,3 +123,19 @@ def editrecipe(id):
         form.image.data = recipe['image']
         form.tags.data = ', '.join(map(str, recipe['tags']))
         return render_template('add_recipe.html', form=form, title='Edit Recipe')
+
+
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    form = SearchForm()
+    if request.method == 'POST':
+        return redirect(url_for('search_results', ingredient=form.search.data))
+    return render_template('search.html', form=form)
+
+
+@app.route('/search_results/<ingredient>')
+def search_results(ingredient):
+    recipes = list(mongo.db.recipes.find({'$text': {'$search': ingredient}}))
+    if recipes:
+        return render_template('search_results.html', recipes=recipes, ingredient=ingredient)
+    return render_template('none_found.html')
