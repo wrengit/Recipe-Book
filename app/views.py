@@ -15,7 +15,7 @@ def index():
     recipes = mongo.db.recipes.find({})
     if request.method == 'POST':
         return redirect(url_for('search_results', ingredient=search_form.search.data))
-    return render_template('index.html', recipes=recipes, form=search_form)
+    return render_template('index.html', recipes=recipes, search_form=search_form)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -23,6 +23,7 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = UserLoginForm()
+    search_form = SearchForm()
     if form.validate_on_submit():
         user = mongo.db.users.find_one({'username': form.username.data})
         if user and User.check_password(user['password'], form.password.data):
@@ -35,7 +36,7 @@ def login():
             return redirect(next_page)
         else:
             flash('Invalid username or password')
-    return render_template('loginform.html', form=form)
+    return render_template('loginform.html', form=form, search_form=search_form)
 
 
 @app.route('/logout')
@@ -50,6 +51,7 @@ def register():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = UserRegistrationForm()
+    search_form = SearchForm()
     if form.validate_on_submit():
         pwhash = generate_password_hash(form.password.data)
         mongo.db.users.insert_one({
@@ -60,13 +62,14 @@ def register():
         })
         flash('You are now registered')
         return redirect(url_for('login'))
-    return render_template('register.html', form=form)
+    return render_template('register.html', form=form, search_form=search_form)
 
 
 @app.route('/postrecipe', methods=['GET', 'POST'])
 @login_required
 def postrecipe():
     form = RecipeForm()
+    search_form = SearchForm()
     if form.validate_on_submit():
         mongo.db.recipes.insert_one({
             'name': form.recipe_name.data,
@@ -79,7 +82,7 @@ def postrecipe():
         })
         flash('Recipe added!')
         return redirect(url_for('index'))
-    return render_template('add_recipe.html', form=form, title='Post Recipe')
+    return render_template('add_recipe.html', form=form, search_form=search_form, title='Post Recipe')
 
 # deletes a recipe. Initially this was tried with an ajax (DELETE) call
 # but this threw HTTP 500 errors.
@@ -100,6 +103,7 @@ def delete(id):
 @login_required
 def editrecipe(id):
     form = RecipeForm()
+    search_form = SearchForm()
     if request.method == "POST":
         if form.validate_on_submit():
             mongo.db.recipes.update_one({"_id": ObjectId(id)}, {"$set": {
@@ -113,7 +117,7 @@ def editrecipe(id):
             }})
             flash('Recipe Updated')
             return redirect(url_for('index'))
-        return render_template('add_recipe.html', form=form, title='Edit Recipe')
+        return render_template('add_recipe.html', form=form, search_form=search_form, title='Edit Recipe')
 
     elif request.method == "GET":
         recipe = mongo.db.recipes.find_one(
@@ -125,7 +129,7 @@ def editrecipe(id):
         form.method.data = recipe['method']
         form.image.data = recipe['image']
         form.tags.data = ', '.join(map(str, recipe['tags']))
-        return render_template('add_recipe.html', form=form, title='Edit Recipe')
+        return render_template('add_recipe.html', form=form, search_form=search_form, title='Edit Recipe')
 
 
 @app.route('/search_results/<ingredient>', methods=['GET', 'POST'])
@@ -134,9 +138,9 @@ def search_results(ingredient):
     recipes = list(mongo.db.recipes.find({'$text': {'$search': ingredient}}))
     if request.method == 'GET':
         if recipes:
-            return render_template('search_results.html', recipes=recipes, ingredient=ingredient, form=search_form)
-        return render_template('none_found.html', form=search_form)
+            return render_template('search_results.html', recipes=recipes, ingredient=ingredient, search_form=search_form)
+        return render_template('none_found.html', search_form=search_form)
     elif request.method == 'POST':
         return redirect(url_for('search_results', ingredient=search_form.search.data))
-    return render_template('index.html', recipes=recipes, form=search_form)
+    return render_template('index.html', recipes=recipes, search_form=search_form)
         
