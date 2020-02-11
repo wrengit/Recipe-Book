@@ -2,7 +2,7 @@
 {% block content %} 
 
 <div class="container-fluid">
-  <div class="row">
+  <div class="row justify-content-center">
     {%for r in recipes %}
     <!--recipe card displayed on index.html-->
     <div class="col-lg-3 col-sm-5 col-12">
@@ -32,8 +32,9 @@
         aria-hidden="true"
         >
         <div class="modal-dialog modal-lg">
+          
           <div class="modal-content">
-            <img class="card-img-top image-fluid" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
+            <img class="card-img-top image-fluid recipe-image" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
             <div class="card-body">
               <button
                 type="button"
