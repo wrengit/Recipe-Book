@@ -64,6 +64,12 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', form=form, search_form=search_form)
 
+@app.route('/profile/<username>')
+@login_required
+def profile(username):
+    search_form=SearchForm()
+    recipes = mongo.db.recipes.find({"owner": current_user.username})
+    return render_template('profile.html', recipes=recipes, search_form=search_form)
 
 @app.route('/postrecipe', methods=['GET', 'POST'])
 @login_required
