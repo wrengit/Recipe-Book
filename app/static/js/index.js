@@ -8,8 +8,10 @@ $(document).ready(() => {
     }
   });
 
-  //put a checkbox selection into an array, then compares the data-tag attribute of each recipe against this
-  //array. Only recipes that meet all checkbox requirements are shown. 
+  //put a checkbox selection into an array on check, removes on uncheck, 
+  //then compares the data-tag attribute of each
+  //recipe against this array. Only recipes that meet all checkbox requirements are shown.
+  //If no checkboxes:checked, then all recipes show
   $("#filter-check input").on("click", () => {
     tags = [];
 
@@ -19,8 +21,6 @@ $(document).ready(() => {
 
     $("#filter-check :checkbox:checked").each(function() {
       tags.push($(this).val());
-    });
-    $("#filter-check :checkbox:checked").each(function() {
       tags.filter(tag => tag !== $(this).val());
     });
 
@@ -30,7 +30,8 @@ $(document).ready(() => {
         .trim()
         .split(" ");
       if (
-        //https://stackoverflow.com/questions/9204283/how-to-check-whether-multiple-values-exist-within-an-javascript-array
+        //(https://stackoverflow.com/questions/9204283/how-to-check-whether-multiple-values-
+        //exist-within-an-javascript-array)
         tags.every(val => tagsArray.includes(val))
       ) {
         $(div).show();
