@@ -1,7 +1,8 @@
+.loggedin{
+  color: red;
+}
 
 /*https://bootstrapious.com/p/how-to-change-bootstrap-navbar-height*/
-
-
 @media (min-width: 768px) {
   .navbar-nav > a {
     /* (80px - line-height of 27px) / 2 = 26.5px */
