@@ -1,4 +1,4 @@
-.loggedin{
+.loggedin {
   color: red;
 }
 
@@ -27,5 +27,9 @@
     /* (80px - button height 34px) / 2 = 23px */
     margin-top: 43px;
     padding: 9px 10px !important;
+  }
+
+  #filter-check {
+    width: 75%;
   }
 }
