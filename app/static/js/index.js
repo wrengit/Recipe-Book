@@ -1,5 +1,5 @@
 //Popup confirm box to ensure user actually wnts to delete recipe
-//redirects to the deleterecipe api using the recipes _id
+//redirects to the deleterecipe api using the recipe's _id
 $(document).ready(() => {
   $(".recipe-delete-confirm").on("click", e => {
     recipeId = $(e.target).data("id");
@@ -8,6 +8,8 @@ $(document).ready(() => {
     }
   });
 
+  //put a checkbox selection into an array, then compares the data-tag attribute of each recipe against this
+  //array. Only recipes that meet all checkbox requirements are shown. 
   $("#filter-check input").on("click", () => {
     tags = [];
 
@@ -37,6 +39,7 @@ $(document).ready(() => {
       }
     }
 
+    //@john_lynch_alumnus provided solution by suggesting a spread operator
     const divsList = $(".filter-div");
     [...divsList].forEach(div => {
       checkTags(div);
