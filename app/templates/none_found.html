@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>No recipe found</h1>
+<div class="container">
+    <h1>No recipe found</h1>
+    <a href="{{url_for('index')}}">Clear Search</a>
+    <p>REPLACE WITH FRIENDLY IMAGE</p>
+</div>
 {% endblock content %}

@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container-fluid">
+
     <div class="row">
-      
+      <div class="col-12"><p>Showing results for {{ingredient}}</p><a href="{{url_for('index')}}">Clear Search</a></div>
       {%for r in recipes %}
       <!--recipe card displayed on index.html-->
       <div class="col-lg-3 col-sm-5 col-12 filter-div" data-tags="{%for t in r.tags %}{{t+' '}}{%endfor%}">
