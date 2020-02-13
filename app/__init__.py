@@ -14,4 +14,4 @@ app.config['MONGO_URI'] = Config.MONGO_URI
 mongo = PyMongo(app)
 
 
-from app import views, users
+from app import views, users, errors
