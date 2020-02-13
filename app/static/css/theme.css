@@ -1,0 +1,44 @@
+
+
+.primary {
+  background-color: #009688;
+}
+
+.primary-light {
+  background-color: #52c7b8;
+}
+
+.primary-dark {
+  background-color: #00675b;
+}
+
+.secondary {
+  background-color: #f9a825;
+}
+
+.secondary-light {
+  background-color: #ffd95a;
+}
+.secondary-light:hover{
+    background-color: #c17900;
+}
+
+.secondary-dark {
+  background-color: #c17900;
+}
+
+.p-text {
+  color: #ffffff;
+}
+
+.s-text {
+  color: #000000;
+}
+
+.primary-color-text {
+  color: #004d40;
+}
+
+.secondary-color-text {
+  color: #f9a825;
+}
