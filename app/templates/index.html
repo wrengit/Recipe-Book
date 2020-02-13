@@ -9,13 +9,13 @@
     <div class="col-lg-3 col-sm-6 col-12 filter-div" data-tags="{%for t in r.tags %}{{t+' '}}{%endfor%}">
 
       <!--xs recipe card layout-->
-      <div class="card my-1 d-sm-none">
+      <div class="card card-xs my-1 d-sm-none">
         <a data-toggle="modal"
         data-target=".{{r._id}}">
-          <div class="d-flex flex-row card-body">
+          <div class="d-flex flex-row card-body card-body-xs">
             <img class="image-fluid mobile-image" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
-            <div class="d-flex flex-column">
-              <h5 class="card-title">{{r.name}}</h5>
+            <div class="d-flex flex-column p-3">
+              <h5 class="card-title card-title-xs">{{r.name}}</h5>
               <p class="card-text">{{r.desc}}</p>
             </div>
           </div>  
@@ -43,7 +43,7 @@
         </button>
          <!--recipe modal-->
       </div>
-      
+
       <!--recipe modal-->
       <div
             class="modal fade {{r._id}}"

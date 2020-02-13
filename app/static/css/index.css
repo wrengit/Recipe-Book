@@ -33,8 +33,12 @@ pre {
   position: absolute;
 }
 
-@media (max-width: 575px) {
-  .card-body {
-    padding: 0;
-  }
+.card-body-xs {
+  padding: 0;
+}
+.card-title-xs {
+  font-size: 1.2rem !important;
+}
+.card-xs {
+  font-size: 0.7rem;
 }
