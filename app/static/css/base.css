@@ -14,15 +14,25 @@ body {
   body {
     padding-top: 130px;
   }
-  
+
   #filter-check {
     width: 75%;
   }
   .navbar {
-    
+    min-height: 95px;
     padding-bottom: 0.5rem;
   }
-  
+  .navbar-brand {
+    padding: 0 15px;
+    height: 100px;
+    line-height: 100px;
+  }
+  .navbar-toggle {
+    /* (80px - button height 34px) / 2 = 23px */
+    margin-top: 33px;
+
+    padding: 9px 10px !important;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -30,3 +40,5 @@ body {
     width: 55%;
   }
 }
+
+/*https://bootstrapious.com/p/how-to-change-bootstrap-navbar-height*/
