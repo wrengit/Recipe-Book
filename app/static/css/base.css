@@ -5,41 +5,24 @@ body {
 .loggedin {
   color: red;
 }
-
-/*https://bootstrapious.com/p/how-to-change-bootstrap-navbar-height*/
-@media (min-width: 768px) {
-  .navbar-nav > a {
-    /* (80px - line-height of 27px) / 2 = 26.5px */
-    padding-top: 46.5px;
-    padding-bottom: 46.5px;
-    line-height: 27px;
-  }
+.navbar {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 @media (min-width: 992px) {
   body {
-    padding-top: 150px;
+    padding-top: 130px;
   }
-
-  .navbar {
-    min-height: 120px;
-  }
-
-  .navbar-brand {
-    padding: 0 15px;
-    height: 120px;
-    line-height: 120px;
-  }
-
-  .navbar-toggle {
-    /* (80px - button height 34px) / 2 = 23px */
-    margin-top: 43px;
-    padding: 9px 10px !important;
-  }
-
+  
   #filter-check {
     width: 75%;
   }
+  .navbar {
+    
+    padding-bottom: 0.5rem;
+  }
+  
 }
 
 @media (min-width: 1200px) {
