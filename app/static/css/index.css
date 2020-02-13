@@ -18,14 +18,23 @@ pre {
 .modal {
   padding-left: 0;
 }
-
-/*https://stackoverflow.com/questions/23400232/force-bootstrap-responsive-image-to-be-square*/
-.image-square{
-  position:relative;
-  overflow:hidden;
-  padding-bottom:100%;
+.mobile-image {
+  max-width: 30vw;
 }
 
-.image-square img{
-  position:absolute;
+/*https://stackoverflow.com/questions/23400232/force-bootstrap-responsive-image-to-be-square*/
+.image-square {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 100%;
+}
+
+.image-square img {
+  position: absolute;
+}
+
+@media (max-width: 575px) {
+  .card-body {
+    padding: 0;
+  }
 }

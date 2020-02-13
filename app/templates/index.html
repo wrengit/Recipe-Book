@@ -1,12 +1,30 @@
 {% extends 'base.html' %} 
+
 {% block content %} 
 
 <div class="container-fluid">
   <div class="row justify-content-center">
     {%for r in recipes %}
     <!--recipe card displayed on index.html-->
-    <div class="col-lg-3 col-sm-5 col-12 filter-div" data-tags="{%for t in r.tags %}{{t+' '}}{%endfor%}">
-      <div class="card my-1">
+    <div class="col-lg-3 col-sm-6 col-12 filter-div" data-tags="{%for t in r.tags %}{{t+' '}}{%endfor%}">
+
+      <!--xs recipe card layout-->
+      <div class="card my-1 d-sm-none">
+        <a data-toggle="modal"
+        data-target=".{{r._id}}">
+          <div class="d-flex flex-row card-body">
+            <img class="image-fluid mobile-image" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
+            <div class="d-flex flex-column">
+              <h5 class="card-title">{{r.name}}</h5>
+              <p class="card-text">{{r.desc}}</p>
+            </div>
+          </div>  
+          
+        </a>
+      </div>
+
+      <!--standard recipe card layout-->
+      <div class="card my-1 d-none d-sm-block">
         <!--https://stackoverflow.com/questions/980855/inputting-a-default-
           image-in-case-the-src-attribute-of-an-html-img-is-not-vali-->
         <div class="image-square">
@@ -24,15 +42,17 @@
           View recipe
         </button>
          <!--recipe modal-->
-        <div
-        class="modal fade {{r._id}}"
-        tabindex="-1"
-        role="dialog"
-        aria-hidden="true"
-        >
-        <div class="modal-dialog modal-lg">
-          
-          <div class="modal-content">
+      </div>
+      
+      <!--recipe modal-->
+      <div
+            class="modal fade {{r._id}}"
+            tabindex="-1"
+            role="dialog"
+            aria-hidden="true"
+          >
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
             <img class="card-img-top image-fluid recipe-image" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
             <div class="card-body">
               <button
@@ -77,13 +97,12 @@
               {% endif %}
             </div>
           </div>
-        </div>
       </div>
+
     </div>
 
     {%endfor%}
   </div>
 </div>
-
 
 {% endblock content %}
