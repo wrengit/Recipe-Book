@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../static/css/base.css" />
     <link rel="stylesheet" href="../static/css/index.css" />
     <link rel="stylesheet" href="../static/css/add_recipe.css" />
-    <title>Document</title>
+    <title>{{title}}</title>
     {% with messages = get_flashed_messages() %} {% if messages %}
     <ul class="flashes">
       {% for message in messages %}
@@ -76,7 +76,7 @@
             <div class="col-12 col-lg-10 text-center px-0 pl-lg-auto">
               {% if self._TemplateReference__context.name not in
               ('loginform.html', 'register.html', 'add_recipe.html',
-              'profile.html')%} {% include 'partials/search.html' %} {% endif %}
+              'profile.html')%} {% include 'partials/search.html' %} 
             </div>
             <div class="row mx-auto pl-sm-5">
               <div class="col-4 col-lg-2 pl-lg-0">
@@ -127,6 +127,7 @@
                   Dessert
                 </label>
               </div>
+              {% endif %}
             </div>
             
           </div>
