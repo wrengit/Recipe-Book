@@ -1,5 +1,5 @@
 from app import mongo
-from wtforms.validators import DataRequired, EqualTo, ValidationError, Email
+from wtforms.validators import DataRequired, EqualTo, ValidationError, Email, Length
 from flask_wtf import FlaskForm
 from wtforms import(
     StringField,
@@ -41,7 +41,7 @@ class UserRegistrationForm(FlaskForm):
 
 class RecipeForm(FlaskForm):
     recipe_name = StringField('Recipe name', validators=[DataRequired('Enter a recipe name')])
-    recipe_desc = TextAreaField('Description', validators=[DataRequired('Give a short recipe description')])
+    recipe_desc = TextAreaField('Description', validators=[DataRequired('Give a short recipe description'), Length(max=50, message='Please enter a short description. Max length is 50 chars.')])
     ingredients = FieldList(StringField('', validators=[DataRequired('Enter ingredient')]), render_kw={'class':'list-group list-group-flush align-items-center pr-5'}, validators=[DataRequired('Enter at least one ingredient')])
     method = TextAreaField('Method', validators=[DataRequired('Detail the recipe method')])
     tags = SelectMultipleField(choices=[('Vegetarian', 'Vegetarian'), ('Vegan', 'Vegan'), ('Healthy', 'Healthy'), ('Snack', 'Snack'), ('Main', 'Main'), ('Dessert', 'Dessert')], option_widget = widgets.CheckboxInput())
