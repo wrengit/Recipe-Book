@@ -3,13 +3,14 @@
 {% block content %} 
 
 <div class="container-fluid">
-  <div class="jumbotron pb-2">
+  <!--jumbotron-->
+  <div class="jumbotron pb-2 primary-dark p-text">
     <h1 class="display-4">Recipe Book</h1>
     <p class="lead">An online recipe book where you can post new recipes, and seach through posted recipes</p>
     <hr class="my-4">
     <p>Take a look around, post some content and get cooking!</p>
     <p class="lead text-center">
-      <a class="btn btn-primary btn-lg" href="{{url_for('postrecipe')}}" role="button">Post a recipe!</a>
+      <a class="btn s-text secondary-light btn-raised btn-lg" href="{{url_for('postrecipe')}}" role="button">Post a recipe!</a>
     </p>
   </div>
   <div class="row justify-content-center">
@@ -39,10 +40,9 @@
         <div class="image-square">
           <img class="card-img-top image-fluid" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
         </div>
-        <div class="card-body">
+        <div class="card-body text-center">
           <h5 class="card-title">{{r.name}}</h5>
-        </div>
-        <button
+          <button
           type="button"
           class="btn btn-primary"
           data-toggle="modal"
@@ -50,6 +50,8 @@
         >
           View recipe
         </button>
+        </div>
+        
          <!--recipe modal-->
       </div>
 
@@ -114,10 +116,10 @@
                 <div class="text-center">
                   <a
                   href="{{url_for('editrecipe', id=(r._id))}}"
-                  class="btn btn-primary"
+                  class="btn primary p-text"
                   ><i class="material-icons inline-icon">edit</i>   Edit Recipe</a
                   >
-                  <button class="btn btn-warning recipe-delete-confirm" data-id={{r._id}}><i class="material-icons inline-icon">delete</i>   Delete Recipe</button>
+                  <button class="btn secondary s-text recipe-delete-confirm" data-id={{r._id}}><i class="material-icons inline-icon s-text">delete</i>   Delete Recipe</button>
                 </div>
                 
                 {% endif %}
