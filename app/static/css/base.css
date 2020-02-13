@@ -9,6 +9,10 @@ body {
   padding-top: 0;
   padding-bottom: 0;
 }
+.inline-icon {
+  vertical-align: bottom;
+  font-size: 1.5rem !important;
+}
 
 @media (min-width: 992px) {
   body {
