@@ -57,7 +57,7 @@
       </div>
       <div class="collapse navbar-collapse" id="navbarToggler">
         <div class="container-fluid px-0" id="filter-check">
-          <div class="row px-lg-0">
+          <div class="row px-lg-0 mb-2 mb-md-1">
             <div class="col-12 col-lg-1 px-0">
               {% if current_user.is_authenticated %}
               <a
@@ -154,6 +154,13 @@
     </nav>
 
     {% block content %} {% endblock content %}
+   
+    <footer>
+      <div class="text-center py-3">© 2020 Copyright:
+        <a href="https://www.github.com/wrengit"> Design by wrenna <i class="material-icons">emoji_nature</i> </a>
+      </div>
+    </footer>
+
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
