@@ -1,5 +1,3 @@
-
-
 .primary {
   background-color: #009688;
 }
@@ -19,8 +17,8 @@
 .secondary-light {
   background-color: #ffd95a;
 }
-.secondary-light:hover{
-    background-color: #c17900;
+.secondary-light:hover {
+  background-color: #c17900;
 }
 
 .secondary-dark {
