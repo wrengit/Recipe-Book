@@ -47,12 +47,10 @@
           class="btn btn-primary"
           data-toggle="modal"
           data-target=".{{r._id}}"
-        >
-          View recipe
-        </button>
+          >
+            View recipe
+          </button>
         </div>
-        
-         <!--recipe modal-->
       </div>
 
       <!--recipe modal-->
@@ -106,7 +104,6 @@
                   <div>
                     <img class="rounded mx-auto d-none d-lg-block recipe-image-lg mr-5" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
                   </div>
-                  
                 </div>
                 <!--method-->
                 <h6 class="card-title pt-3">Method</h6>
@@ -121,15 +118,11 @@
                   >
                   <button class="btn secondary s-text recipe-delete-confirm" data-id={{r._id}}><i class="material-icons inline-icon s-text">delete</i>   Delete Recipe</button>
                 </div>
-                
                 {% endif %}
               </div>
-
-              
             </div>
           </div>
-      </div>
-
+        </div>
     </div>
 
     {%endfor%}
