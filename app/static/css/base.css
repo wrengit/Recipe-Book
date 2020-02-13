@@ -33,3 +33,9 @@
     width: 75%;
   }
 }
+
+@media(min-width:1200px){
+  #filter-check {
+    width: 55%;
+  }
+}
