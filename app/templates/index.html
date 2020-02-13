@@ -53,48 +53,61 @@
           >
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
-            <img class="card-img-top image-fluid recipe-image" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
-            <div class="card-body">
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <h3 class="card-title">{{r.name}}</h5>
-
-              <p class="card-text">{{r.desc}}</p>
-
-              <div>
-                {% for tag in r.tags %}
-
-                <span>
-                  <div><i class="material-icons">done</i></div>
-                  <div>{{tag}}</div>
-                </span>
-
-              {% endfor %}
-              </div>
-                <h6 class="card-title">Ingredients</h6>
-                <ul class="list-group list-group-flush">
-                  {% for i in r.ingredients %}
-                  <li class="list-group-item">{{i}}</li>
-                  {% endfor %}
-                </ul>
-                <h6 class="card-title">Method</h6>
-                <pre>{{r.method}}</pre>
-              </div>
-
-              {% if r.owner == current_user.username or current_user.is_admin %}
-              <a
-                href="{{url_for('editrecipe', id=(r._id))}}"
-                class="btn btn-primary"
-                >Edit Recipe</a
+              <img class="card-img-top image-fluid d-lg-none" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
+              <div class="card-body">
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
                 >
-              <button class="btn btn-warning recipe-delete-confirm" data-id={{r._id}}>Delete Recipe</button>
-              {% endif %}
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="card-title">{{r.name}}</h5>
+
+                <p class="card-text">{{r.desc}}</p>
+
+                <div class="d-flex flex-row justify-content-around">
+                  {% for tag in r.tags %}
+
+                  <div class="d-flex flex-col">
+                    <div>
+                      <div><i class="material-icons">done</i></div>
+                      <div>{{tag}}</div>
+                    </div>
+                    
+                  </div>
+
+                {% endfor %}
+                </div>
+                <div class="d-flex flex-row justify-content-around pt-3">
+                  <div>
+                    <h6 class="card-title">Ingredients</h6>
+                    <ul class="list-group list-group-flush">
+                    {% for i in r.ingredients %}
+                      <li class="list-group-item">{{i}}</li>
+                    {% endfor %}
+                    </ul>
+                  </div>
+                  <div>
+                    <img class="rounded mx-auto d-none d-lg-block recipe-image-lg mr-5" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
+                  </div>
+                  
+                </div>
+                
+                <h6 class="card-title pt-3">Method</h6>
+                <pre>{{r.method}}</pre>
+                {% if r.owner == current_user.username or current_user.is_admin %}
+                <a
+                  href="{{url_for('editrecipe', id=(r._id))}}"
+                  class="btn btn-primary"
+                  >Edit Recipe</a
+                >
+                <button class="btn btn-warning recipe-delete-confirm" data-id={{r._id}}>Delete Recipe</button>
+                {% endif %}
+              </div>
+
+              
             </div>
           </div>
       </div>
