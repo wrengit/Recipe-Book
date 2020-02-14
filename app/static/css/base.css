@@ -11,6 +11,10 @@ body {
   font-size: 1.5rem !important;
 }
 
+.checkbox-decorator {
+  z-index: 0;
+}
+
 @media (min-width: 992px) {
   body {
     padding-top: 130px;
