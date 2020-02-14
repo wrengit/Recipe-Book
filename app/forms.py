@@ -40,7 +40,7 @@ class UserRegistrationForm(FlaskForm):
 
 
 class RecipeForm(FlaskForm):
-    recipe_name = StringField('Recipe name', validators=[DataRequired('Enter a recipe name')])
+    recipe_name = StringField('Recipe name', validators=[DataRequired('Enter a recipe name'), Length(max=20, message='Your recipe name is too long! Keeep it short and sweet!')])
     recipe_desc = TextAreaField('Description', validators=[DataRequired('Give a short recipe description'), Length(max=50, message='Please enter a short description. Max length is 50 chars.')])
     ingredients = FieldList(StringField('', validators=[DataRequired('Enter ingredient')]), render_kw={'class':'list-group list-group-flush align-items-center pr-5'}, validators=[DataRequired('Enter at least one ingredient')])
     method = TextAreaField('Method', validators=[DataRequired('Detail the recipe method')])
