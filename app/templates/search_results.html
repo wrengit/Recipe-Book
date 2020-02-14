@@ -1,24 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container-fluid navpad">
+  <!--jumbotron-->
+  <div class="jumbotron pb-2 primary-dark p-text">
+    <h1 class="display-4">Recipe Book</h1>
+    <p class="lead">An online recipe book where you can post new recipes, and seach through posted recipes</p>
+    <hr class="my-4">
+    <p>Take a look around, post some content and get cooking!</p>
+    <p class="lead text-center">
+      <a class="btn s-text secondary-light secondary-light-hover btn-raised btn-lg" href="{{url_for('postrecipe')}}" role="button">Post a recipe!</a>
+    </p>
+  </div>
   <div class="row justify-content-center">
-    <div class="col-12">
-      <p>Here are your search results for {{ingredient}}</p>
-      <a href="{{url_for('index')}}">Clear search</a>
-    </div>
     {%for r in recipes %}
     <!--recipe card displayed on index.html-->
-    <div class="col-lg-3 col-sm-6 col-12 filter-div" data-tags="{%for t in r.tags %}{{t+' '}}{%endfor%}">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12 filter-div px-2 pb-3" data-tags="{%for t in r.tags %}{{t+' '}}{%endfor%}">
 
       <!--xs recipe card layout-->
       <div class="card card-xs my-1 d-sm-none">
         <a data-toggle="modal"
         data-target=".{{r._id}}">
           <div class="d-flex flex-row card-body card-body-xs">
-            <img class="image-fluid mobile-image" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
+            <img class="mobile-image" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
             <div class="d-flex flex-column p-3">
-              <h5 class="card-title card-title-xs">{{r.name}}</h5>
-              <p class="card-text">{{r.desc}}</p>
+              <h5 class="card-title text-truncate card-title-xs">{{r.name}}</h5>
+              <p class="truncate-overflow card-text">{{r.desc}}</p>
             </div>
           </div>  
           
@@ -26,24 +32,19 @@
       </div>
 
       <!--standard recipe card layout-->
-      <div class="card my-1 d-none d-sm-block">
-        <!--https://stackoverflow.com/questions/980855/inputting-a-default-
-          image-in-case-the-src-attribute-of-an-html-img-is-not-vali-->
-        <div class="image-square">
-          <img class="card-img-top image-fluid" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">{{r.name}}</h5>
-        </div>
-        <button
-          type="button"
-          class="btn btn-primary"
-          data-toggle="modal"
-          data-target=".{{r._id}}"
-        >
-          View recipe
-        </button>
-         <!--recipe modal-->
+      <div class="card my-1 d-none d-sm-block hvr-grow">
+        <a data-toggle="modal"
+        data-target=".{{r._id}}">
+          <!--https://stackoverflow.com/questions/980855/inputting-a-default-
+            image-in-case-the-src-attribute-of-an-html-img-is-not-vali-->
+          <div class="image-square">
+            <img class="card-img-top desktop-image image-fluid" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title">{{r.name.lower().title()}}</h5>
+            <p>{{r.desc}}</p>
+          </div>
+        </a>
       </div>
 
       <!--recipe modal-->
@@ -68,6 +69,7 @@
                 <h3 class="card-title">{{r.name}}</h5>
 
                 <p class="card-text">{{r.desc}}</p>
+                <hr>
                   <!--tags-->
                 <div class="d-flex flex-row justify-content-around">
                   {% for tag in r.tags %}
@@ -82,6 +84,7 @@
 
                 {% endfor %}
                 </div>
+                <hr>
                   <!--ingredients & large image-->
                 <div class="d-flex flex-row align-items-center justify-content-around pt-3">
                   <div>
@@ -95,26 +98,26 @@
                   <div>
                     <img class="rounded mx-auto d-none d-lg-block recipe-image-lg mr-5" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
                   </div>
-                  
                 </div>
                 <!--method-->
                 <h6 class="card-title pt-3">Method</h6>
                 <pre>{{r.method}}</pre>
                 {% if r.owner == current_user.username or current_user.is_admin %}
-                <a
+                <hr>
+                <!--button-->
+                <div class="text-center">
+                  <a
                   href="{{url_for('editrecipe', id=(r._id))}}"
-                  class="btn btn-primary"
-                  >Edit Recipe</a
-                >
-                <button class="btn btn-warning recipe-delete-confirm" data-id={{r._id}}>Delete Recipe</button>
+                  class="btn btn-raised primary primary-hover p-text"
+                  ><i class="material-icons p-text inline-icon">edit</i>   Edit Recipe</a
+                  >
+                  <button class="btn btn-raised secondary secondary-hover s-text recipe-delete-confirm" data-id={{r._id}}><i class="material-icons inline-icon s-text">delete</i>   Delete Recipe</button>
+                </div>
                 {% endif %}
               </div>
-
-              
             </div>
           </div>
-      </div>
-
+        </div>
     </div>
 
     {%endfor%}
