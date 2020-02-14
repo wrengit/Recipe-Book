@@ -16,7 +16,7 @@
   <div class="row justify-content-center">
     {%for r in recipes %}
     <!--recipe card displayed on index.html-->
-    <div class="col-lg-3 col-sm-6 col-12 filter-div pb-3" data-tags="{%for t in r.tags %}{{t+' '}}{%endfor%}">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12 filter-div px-2 pb-3" data-tags="{%for t in r.tags %}{{t+' '}}{%endfor%}">
 
       <!--xs recipe card layout-->
       <div class="card card-xs my-1 d-sm-none">
@@ -43,7 +43,7 @@
             <img class="card-img-top desktop-image image-fluid" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
           </div>
           <div class="card-body text-center">
-            <h5 class="card-title">{{r.name}}</h5>
+            <h5 class="card-title">{{r.name.lower().title()}}</h5>
             <p>{{r.desc}}</p>
           </div>
         </a>
