@@ -3,12 +3,11 @@
 <div class="container navpad">
   <!--jumbotron-->
   <div class="jumbotron pb-2 primary-dark p-text">
-    <h1 class="display-4">Recipe Book</h1>
-    <p class="lead">An online recipe book where you can post new recipes, and seach through posted recipes</p>
+    <h1 class="display-4">Showing search results for {{ingredient}}</h1>
+    <p class="lead">Did you know you can search for multiple ingredients?</p>
     <hr class="my-4">
-    <p>Take a look around, post some content and get cooking!</p>
     <p class="lead text-center">
-      <a class="btn s-text secondary-light secondary-light-hover btn-raised btn-lg" href="{{url_for('postrecipe')}}" role="button">Post a recipe!</a>
+      <a class="btn s-text secondary-light secondary-light-hover btn-raised btn-lg" href="{{url_for('index')}}" role="button">Clear search</a>
     </p>
   </div>
   <div class="row justify-content-center">
