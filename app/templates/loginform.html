@@ -7,26 +7,29 @@
     <div class="col-lg-6 col-md-8">
       <div class="card">
         <div class="card-body">
-          <div class="form-group">
-            {{form.username.label(class_="bmd-label-floating")}}
-            {{form.username(class_="form-control")}} {% for error in
-            form.username.errors %}
-            <span class="error">[{{error}}]</span>
-            {% endfor %}
-            <small id="recipeNameHelp" class="bmd-help">Enter username</small>
-          </div>
+          <form method='POST'>
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+              {{form.username.label(class_="bmd-label-floating")}}
+              {{form.username(class_="form-control")}} {% for error in
+              form.username.errors %}
+              <span class="error">[{{error}}]</span>
+              {% endfor %}
+              <small id="recipeNameHelp" class="bmd-help">Enter username</small>
+            </div>
 
-          <div class="form-group">
-            {{form.password.label(class_="bmd-label-floating")}}
-            {{form.password(class_="form-control", autocomplete="off",
-            type="search")}} {% for error in form.password.errors %}
-            <span class="error">{{error}}</span>
-            {% endfor %}
-            <small id="recipeDescHelp" class="bmd-help">Enter password</small>
-          </div>
-          <div>
-            {{form.login(class_="btn btn-raised primary primary-hover p-text")}}
-          </div>
+            <div class="form-group">
+              {{form.password.label(class_="bmd-label-floating")}}
+              {{form.password(class_="form-control", autocomplete="off",
+              type="password")}} {% for error in form.password.errors %}
+              <span class="error">{{error}}</span>
+              {% endfor %}
+              <small id="recipeDescHelp" class="bmd-help">Enter password</small>
+            </div>
+            <div>
+              {{form.login(class_="btn btn-raised primary primary-hover p-text")}}
+            </div>
+          </form>
         </div>
       </div>
     </div>
