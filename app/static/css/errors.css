@@ -1,0 +1,12 @@
+.http-error {
+  background-image: url("../images/http_error.jpg");
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.error-div{
+    height: 100%;
+}

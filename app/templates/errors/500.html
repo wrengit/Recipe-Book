@@ -1,5 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Ooops. an unexpected error has occured. Don't worry, we've let someone know</h1>
-<a href="{{url_for('index')}}">Back</a>
+<div class="container-fluid http-error ">
+    <div
+      class="row justify-content-center error-div text-center align-items-center"
+    >
+      <div class="col-10 col-sm-8 col-md-6">
+        <div class="card">
+          <div class="card-body pt-sm-4">
+            <h1 class="card-title">Ooops. An unexpected error has occured</h1>
+            <p class="card-text">We've let someone know!</p>
+            <a class="btn btn-raised primary primary-hover p-text" href="{{url_for('index')}}">Return to main page</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock content %}
