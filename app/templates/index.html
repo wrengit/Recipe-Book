@@ -25,8 +25,8 @@
           <div class="d-flex flex-row card-body card-body-xs">
             <img class="image-fluid mobile-image" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
             <div class="d-flex flex-column p-3">
-              <h5 class="card-title card-title-xs">{{r.name}}</h5>
-              <p class="card-text">{{r.desc}}</p>
+              <h5 class="card-title text-truncate card-title-xs">{{r.name}}</h5>
+              <p class="truncate-overflow card-text">{{r.desc}}</p>
             </div>
           </div>  
           
