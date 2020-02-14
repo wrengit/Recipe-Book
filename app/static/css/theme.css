@@ -1,15 +1,19 @@
 .primary {
   background-color: #009688;
 }
-.primary-hover:hover {
+.primary-hover:hover,
+.primary-hover:focus,
+.primary-hover:active {
   background-color: #00675b;
-  color:#ffffff;
+  color: #ffffff;
 }
 
 .primary-light {
   background-color: #52c7b8;
 }
-.primary-light-hover:hover {
+.primary-light-hover:hover,
+.primary-hover:focus,
+.primary-hover:active {
   background-color: #00675b;
 }
 
@@ -20,15 +24,19 @@
 .secondary {
   background-color: #f9a825;
 }
-.secondary-hover:hover{
+.secondary-hover:hover,
+.secondary-hover:focus,
+.secondary-hover:active {
   background-color: #c17900;
-  color:#000000;
+  color: #000000;
 }
 
 .secondary-light {
   background-color: #ffd95a;
 }
-.secondary-light-hover:hover {
+.secondary-light-hover:hover,
+.secondary-light-hover:focus,
+.secondary-light-hover:active {
   background-color: #c17900;
 }
 
