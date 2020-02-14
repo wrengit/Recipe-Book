@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../static/css/index.css" />
     <link rel="stylesheet" href="../static/css/add_recipe.css" />
     <link rel="stylesheet" href="../static/css/theme.css"/>
+    <link rel="stylesheet" href="../static/css/errors.css"/>
     <title>{{title}}</title>
     {% with messages = get_flashed_messages() %} {% if messages %}
     <ul class="flashes">
@@ -28,6 +29,8 @@
     {% endif %} {% endwith %}
   </head>
   <body>
+    {% if self._TemplateReference__context.name not in ('/errors/404.html', '/errors/500.html') %}
+    
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
       <button
         class="navbar-toggler"
@@ -153,14 +156,17 @@
         {% endif %}
       </div>
     </nav>
-
+    {{self._TemplateReference__context.name}}
+    {% endif %}
+    
     {% block content %} {% endblock content %}
-   
+    {% if self._TemplateReference__context.name not in ('/errors/404.html', '/errors/500.html') %}
     <footer>
       <div class="text-center py-3">© 2020 Copyright:
         <a href="https://www.github.com/wrengit"> Design by wrenna <i class="material-icons">emoji_nature</i> </a>
       </div>
     </footer>
+    {%endif%}
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
