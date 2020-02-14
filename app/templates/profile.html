@@ -7,6 +7,9 @@
     <p class="lead">Take a look at your posted recipes below</p>
     <hr class="my-4">
     <p>Thanks for contributing!</p>
+    <p class="lead text-center">
+      <a class="btn s-text secondary-light secondary-light-hover btn-raised btn-lg" href="{{url_for('index')}}" role="button">Return to main page</a>
+    </p>
   </div>
   <div class="row justify-content-center">
     {%for r in recipes %}
