@@ -1,9 +1,16 @@
 .primary {
   background-color: #009688;
 }
+.primary-hover:hover {
+  background-color: #00675b;
+  color:#ffffff;
+}
 
 .primary-light {
   background-color: #52c7b8;
+}
+.primary-light-hover:hover {
+  background-color: #00675b;
 }
 
 .primary-dark {
@@ -13,11 +20,15 @@
 .secondary {
   background-color: #f9a825;
 }
+.secondary-hover:hover{
+  background-color: #c17900;
+  color:#000000;
+}
 
 .secondary-light {
   background-color: #ffd95a;
 }
-.secondary-light:hover {
+.secondary-light-hover:hover {
   background-color: #c17900;
 }
 
