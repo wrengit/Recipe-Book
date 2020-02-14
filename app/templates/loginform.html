@@ -1,12 +1,49 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<div class="container navpad">
+  <!--jumbotron-->
+  <div class="jumbotron pb-2 primary-dark p-text">
+    <h1 class="display-4">Please login</h1>
+    <hr class="my-4" />
+    <div class="col-lg-6 col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <div class="form-group">
+            {{form.username.label(class_="bmd-label-floating")}}
+            {{form.username(class_="form-control")}} {% for error in
+            form.username.errors %}
+            <span class="error">[{{error}}]</span>
+            {% endfor %}
+            <small id="recipeNameHelp" class="bmd-help">Enter username</small>
+          </div>
 
-{% block content %}
-<form method='POST'>
-    {{form.hidden_tag()}}
-    {{form.username.label}}{{form.username(size=20)}}
-    {{form.password.label}}{{form.password(size=20)}}
-    {{form.login()}}
-</form>
+          <div class="form-group">
+            {{form.password.label(class_="bmd-label-floating")}}
+            {{form.password(class_="form-control", autocomplete="off",
+            type="search")}} {% for error in form.password.errors %}
+            <span class="error">{{error}}</span>
+            {% endfor %}
+            <small id="recipeDescHelp" class="bmd-help">Enter password</small>
+          </div>
+          <div>
+            {{form.login(class_="btn btn-raised primary primary-hover p-text")}}
+          </div>
+        </div>
+      </div>
+    </div>
 
-<a href="{{url_for('register')}}" type="button">Register</a>
+    <p class="lead pt-3">Not registered? Click below</p>
+    <div class="col-12 col-md-2">
+       <p class="lead">
+        <a
+            class="btn s-text secondary-light secondary-light-hover btn-raised btn-lg"
+            href="{{url_for('register')}}"
+            role="button"
+            >Register</a
+        >
+        </p> 
+    </div>
+        
+  </div>
+</div>
+
 {% endblock content %}
