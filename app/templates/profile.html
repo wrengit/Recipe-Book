@@ -3,13 +3,10 @@
 <div class="container-fluid navpad">
   <!--jumbotron-->
   <div class="jumbotron pb-2 primary-dark p-text">
-    <h1 class="display-4">Recipe Book</h1>
-    <p class="lead">An online recipe book where you can post new recipes, and seach through posted recipes</p>
+    <h1 class="display-4">Hello {{current_user.username}}</h1>
+    <p class="lead">Take a look at your posted recipes below</p>
     <hr class="my-4">
-    <p>Take a look around, post some content and get cooking!</p>
-    <p class="lead text-center">
-      <a class="btn s-text secondary-light secondary-light-hover btn-raised btn-lg" href="{{url_for('postrecipe')}}" role="button">Post a recipe!</a>
-    </p>
+    <p>Thanks for contributing!</p>
   </div>
   <div class="row justify-content-center">
     {%for r in recipes %}
