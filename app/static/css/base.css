@@ -1,5 +1,5 @@
-body {
-  padding-top: 80px;
+.navpad {
+  padding-top: 50px;
 }
 
 .navbar {
@@ -16,8 +16,8 @@ body {
 }
 
 @media (min-width: 992px) {
-  body {
-    padding-top: 130px;
+  .navpad {
+    padding-top: 95px;
   }
 
   #filter-check {
