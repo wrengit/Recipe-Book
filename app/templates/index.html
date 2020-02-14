@@ -16,14 +16,14 @@
   <div class="row justify-content-center">
     {%for r in recipes %}
     <!--recipe card displayed on index.html-->
-    <div class="col-lg-3 col-sm-6 col-12 filter-div" data-tags="{%for t in r.tags %}{{t+' '}}{%endfor%}">
+    <div class="col-lg-3 col-sm-6 col-12 filter-div pb-3" data-tags="{%for t in r.tags %}{{t+' '}}{%endfor%}">
 
       <!--xs recipe card layout-->
       <div class="card card-xs my-1 d-sm-none">
         <a data-toggle="modal"
         data-target=".{{r._id}}">
           <div class="d-flex flex-row card-body card-body-xs">
-            <img class="image-fluid mobile-image" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
+            <img class="mobile-image" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
             <div class="d-flex flex-column p-3">
               <h5 class="card-title text-truncate card-title-xs">{{r.name}}</h5>
               <p class="truncate-overflow card-text">{{r.desc}}</p>
@@ -40,11 +40,11 @@
           <!--https://stackoverflow.com/questions/980855/inputting-a-default-
             image-in-case-the-src-attribute-of-an-html-img-is-not-vali-->
           <div class="image-square">
-            <img class="card-img-top image-fluid" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
+            <img class="card-img-top desktop-image image-fluid" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
           </div>
           <div class="card-body text-center">
             <h5 class="card-title">{{r.name}}</h5>
-            <small>{{r.desc}}</small>
+            <p>{{r.desc}}</p>
           </div>
         </a>
       </div>

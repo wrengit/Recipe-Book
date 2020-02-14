@@ -19,7 +19,13 @@ pre {
   padding-left: 0;
 }
 .mobile-image {
-  max-width: 30vw;
+  max-width: 35vw;
+  object-fit: cover;
+}
+
+.desktop-image {
+  height: 100%;
+  
 }
 
 /*https://stackoverflow.com/questions/23400232/force-bootstrap-responsive-image-to-be-square*/
@@ -31,6 +37,7 @@ pre {
 
 .image-square img {
   position: absolute;
+  object-fit: cover;
 }
 
 .card-body {
