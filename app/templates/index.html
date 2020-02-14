@@ -10,7 +10,7 @@
     <hr class="my-4">
     <p>Take a look around, post some content and get cooking!</p>
     <p class="lead text-center">
-      <a class="btn s-text secondary-light btn-raised btn-lg" href="{{url_for('postrecipe')}}" role="button">Post a recipe!</a>
+      <a class="btn s-text secondary-light secondary-light-hover btn-raised btn-lg" href="{{url_for('postrecipe')}}" role="button">Post a recipe!</a>
     </p>
   </div>
   <div class="row justify-content-center">
@@ -34,23 +34,19 @@
       </div>
 
       <!--standard recipe card layout-->
-      <div class="card my-1 d-none d-sm-block">
-        <!--https://stackoverflow.com/questions/980855/inputting-a-default-
-          image-in-case-the-src-attribute-of-an-html-img-is-not-vali-->
-        <div class="image-square">
-          <img class="card-img-top image-fluid" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
-        </div>
-        <div class="card-body text-center">
-          <h5 class="card-title">{{r.name}}</h5>
-          <button
-          type="button"
-          class="btn btn-primary"
-          data-toggle="modal"
-          data-target=".{{r._id}}"
-          >
-            View recipe
-          </button>
-        </div>
+      <div class="card my-1 d-none d-sm-block hvr-grow">
+        <a data-toggle="modal"
+        data-target=".{{r._id}}">
+          <!--https://stackoverflow.com/questions/980855/inputting-a-default-
+            image-in-case-the-src-attribute-of-an-html-img-is-not-vali-->
+          <div class="image-square">
+            <img class="card-img-top image-fluid" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
+          </div>
+          <div class="card-body text-center">
+            <h5 class="card-title">{{r.name}}</h5>
+            <small>{{r.desc}}</small>
+          </div>
+        </a>
       </div>
 
       <!--recipe modal-->
@@ -110,13 +106,14 @@
                 <pre>{{r.method}}</pre>
                 {% if r.owner == current_user.username or current_user.is_admin %}
                 <hr>
+                <!--button-->
                 <div class="text-center">
                   <a
                   href="{{url_for('editrecipe', id=(r._id))}}"
-                  class="btn primary p-text"
-                  ><i class="material-icons inline-icon">edit</i>   Edit Recipe</a
+                  class="btn btn-raised primary primary-hover p-text"
+                  ><i class="material-icons p-text inline-icon">edit</i>   Edit Recipe</a
                   >
-                  <button class="btn secondary s-text recipe-delete-confirm" data-id={{r._id}}><i class="material-icons inline-icon s-text">delete</i>   Delete Recipe</button>
+                  <button class="btn btn-raised secondary secondary-hover s-text recipe-delete-confirm" data-id={{r._id}}><i class="material-icons inline-icon s-text">delete</i>   Delete Recipe</button>
                 </div>
                 {% endif %}
               </div>
