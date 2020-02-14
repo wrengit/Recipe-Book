@@ -18,18 +18,20 @@ pre {
 .modal {
   padding-left: 0;
 }
+
 .mobile-image {
   width: 35vw;
   height: 35vw;
+  -o-object-fit: cover;
   object-fit: cover;
 }
 
 .desktop-image {
   height: 100%;
-  
 }
 
 /*https://stackoverflow.com/questions/23400232/force-bootstrap-responsive-image-to-be-square*/
+
 .image-square {
   position: relative;
   overflow: hidden;
@@ -38,6 +40,7 @@ pre {
 
 .image-square img {
   position: absolute;
+  -o-object-fit: cover;
   object-fit: cover;
 }
 
@@ -70,11 +73,13 @@ pre {
   -webkit-transition-property: transform;
   transition-property: transform;
 }
-.hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
   -webkit-transform: scale(1.02);
   transform: scale(1.02);
 }
-
 
 /* https://css-tricks.com/line-clampin/ */
 
@@ -85,7 +90,7 @@ pre {
 .line-clamp {
   display: -webkit-box;
   -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;  
+  -webkit-box-orient: vertical;
 }
 
 html {
