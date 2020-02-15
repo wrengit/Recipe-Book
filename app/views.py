@@ -71,7 +71,7 @@ def profile(username):
     recipes = mongo.db.recipes.find({"owner": current_user.username})
     return render_template('profile.html', recipes=recipes, search_form=search_form)
 
-#Past recipe
+#Post recipe
 @app.route('/postrecipe', methods=['GET', 'POST'])
 @login_required
 def postrecipe():
