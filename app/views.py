@@ -112,7 +112,7 @@ def editrecipe(id):
     search_form = SearchForm()
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(id)})
     #stops user editing recipes not owned by finding recipe id in source code
-    if current_user.username != recipe['owner'] or current_user.is_admin:
+    if current_user.username != recipe['owner']:
         flash('Action not allowed')
         return redirect(url_for('index'))
     if request.method == "POST":
