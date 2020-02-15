@@ -7,6 +7,7 @@ from app import login, mongo
 # https://stackoverflow.com/questions/54992412/flask-login-usermixin-class-with-a-mongodb
 # https://github.com/boh717/FlaskLogin-and-pymongo
 
+# add a user class for Flask-login
 class User():
     def __init__(self, username, email, _id, is_admin):
         self.username = username
