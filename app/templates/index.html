@@ -16,17 +16,36 @@
   <div class="row justify-content-center">
     {%for r in recipes %}
     <!--recipe card displayed on index.html-->
-    <div class="col-lg-3 col-md-4 col-sm-6 col-12 filter-div px-2 pb-3" data-tags="{%for t in r.tags %}{{t+' '}}{%endfor%}">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12 filter-div px-2 pb-1 pb-lg-3" data-tags="{%for t in r.tags %}{{t+' '}}{%endfor%}">
 
       <!--xs recipe card layout-->
       <div class="card card-xs my-1 d-sm-none">
         <a data-toggle="modal"
         data-target=".{{r._id}}">
-          <div class="d-flex flex-row card-body card-body-xs">
+          <div class="d-flex flex-row ">
             <img class="mobile-image" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
-            <div class="d-flex flex-column p-3">
-              <h5 class="card-title text-truncate card-title-xs">{{r.name}}</h5>
-              <p class="truncate-overflow card-text">{{r.desc}}</p>
+            
+            <div class="d-flex flex-column xxs-pad px-3 pt-3 pb-1 card-body card-body-xs">
+              <h5 class="pl-2 mb-2 card-title line-clamp card-title-xs">{{r.name.lower().title()}}</h5>
+              <p class="pl-2 xs-text">{{r.desc}}</p>
+              
+              
+                <div class="d-flex mt-auto flex-row justify-content-around card-footer card-footer-xs">
+                  {% for tag in r.tags %}
+    
+                  <div class="d-flex flex-column text-center align-self-end">
+                    
+                      <small class="primary-color-light-text"><i class="material-icons icon-small">done</i></small>
+                      <small class="text-muted">{{tag}}</small>
+                    
+                    
+                  </div>
+    
+                {% endfor %}
+                </div>
+              
+                
+              
             </div>
           </div>  
           
@@ -42,9 +61,25 @@
           <div class="image-square">
             <img class="card-img-top desktop-image image-fluid" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
           </div>
-          <div class="card-body text-center">
+          <div class="card-body text-center pb-1">
             <h5 class="card-title">{{r.name.lower().title()}}</h5>
-            <p>{{r.desc}}</p>
+            <p class="mb-0">{{r.desc}}</p>
+          </div>
+          <!--card footer-->
+          <div class="card-footer p-1">
+            <div class="d-flex flex-row justify-content-around card-xs">
+              {% for tag in r.tags %}
+
+              <div class="d-flex flex-column text-center">
+                
+                  <small class="primary-color-light-text"><i class="material-icons">done</i></small>
+                  <small class="text-muted">{{tag}}</small>
+                
+                
+              </div>
+
+            {% endfor %}
+            </div>
           </div>
         </a>
       </div>
@@ -59,6 +94,7 @@
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <img class="card-img-top image-fluid d-lg-none" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
+
               <div class="card-body">
                 <button
                   type="button"
@@ -68,24 +104,13 @@
                 >
                   <span aria-hidden="true">&times;</span>
                 </button>
-                <h3 class="card-title">{{r.name}}</h5>
+                <div class="text-center">
+                  <h1 class="modal-title">{{r.name.lower().title()}}</h1>
+                  <small class="text-muted">Recipe by {{r.owner}}</small>
 
-                <p class="card-text">{{r.desc}}</p>
-                <hr>
-                  <!--tags-->
-                <div class="d-flex flex-row justify-content-around">
-                  {% for tag in r.tags %}
-
-                  <div class="d-flex flex-col">
-                    <div>
-                      <div><i class="material-icons">done</i></div>
-                      <div>{{tag}}</div>
-                    </div>
-                    
-                  </div>
-
-                {% endfor %}
+                  <p class="card-text pt-2 font-weight-light">{{r.desc}}</p>
                 </div>
+                
                 <hr>
                   <!--ingredients & large image-->
                 <div class="d-flex flex-row align-items-center justify-content-around pt-3">
@@ -102,8 +127,8 @@
                   </div>
                 </div>
                 <!--method-->
-                <h6 class="card-title pt-3">Method</h6>
-                <pre>{{r.method}}</pre>
+                <h6 class="card-title pt-3 pl-lg-5">Method</h6>
+                <pre class="px-lg-5">{{r.method}}</pre>
                 {% if r.owner == current_user.username or current_user.is_admin %}
                 <hr>
                 <!--button-->
@@ -117,9 +142,24 @@
                 </div>
                 {% endif %}
               </div>
+              <div class="card-footer">
+                <div class="d-flex flex-row justify-content-around">
+                  {% for tag in r.tags %}
+    
+                  <div class="d-flex flex-column text-center">
+                    
+                      <small class="primary-color-light-text"><i class="material-icons">done</i></small>
+                      <small class="text-muted">{{tag}}</small>
+                    
+                    
+                  </div>
+    
+                {% endfor %}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+      </div>
     </div>
 
     {%endfor%}

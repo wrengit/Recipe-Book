@@ -52,11 +52,24 @@ pre {
   padding: 0;
   min-height: 100px;
 }
+.card-body-xs p {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.card-footer-xs {
+  border-top: 0;
+  padding: 0;
+}
+
+.icon-small {
+  font-size: 1rem;
+}
 .card-title {
   font-size: 1.3rem !important;
 }
 .card-title-xs {
-  font-size: 1.2rem !important;
+  font-size: 1.1rem !important;
+  margin-bottom: 0.25rem;
 }
 .card-xs {
   font-size: 0.7rem;
@@ -85,25 +98,20 @@ pre {
 }
 
 /* https://css-tricks.com/line-clampin/ */
-
-.d-flex {
-  min-width: 0;
-}
-
 .line-clamp {
+  overflow: hidden;
+  text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
 
-html {
-  --lh: 1rem;
-  line-height: var(--lh);
-}
-
-.truncate-overflow {
-  --max-lines: 2;
-  position: relative;
-  max-height: calc(var(--lh) * var(--max-lines));
-  overflow: hidden;
+/*targets very specific small screen mobiles (iPhone 5 etc)*/
+@media (max-width: 330px) {
+  .xs-text {
+    font-size: 0.6rem;
+  }
+  .xxs-pad {
+    padding: 0.25rem !important;
+  }
 }
