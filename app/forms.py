@@ -41,7 +41,7 @@ class UserRegistrationForm(FlaskForm):
 
 class RecipeForm(FlaskForm):
     recipe_name = StringField('Recipe name', validators=[DataRequired('Enter a recipe name'), Length(max=30, message='Your recipe name is too long! Keeep it short and sweet!')])
-    recipe_desc = TextAreaField('Description', validators=[DataRequired('Give a short recipe description'), Length(max=75, message='Maximum description length is %(max)d chars')])
+    recipe_desc = TextAreaField('Description', validators=[DataRequired('Give a short recipe description'), Length(max=100, message='Maximum description length is %(max)d chars')])
     ingredients = FieldList(StringField('', validators=[DataRequired('Enter ingredient')]), render_kw={'class':'list-group list-group-flush align-items-center pr-5'}, validators=[DataRequired('Enter at least one ingredient')])
     method = TextAreaField('Method', validators=[DataRequired('Detail the recipe method')])
     tags = SelectMultipleField(choices=[('Vegetarian', 'Vegetarian'), ('Vegan', 'Vegan'), ('Healthy', 'Healthy'), ('Snack', 'Snack'), ('Main', 'Main'), ('Dessert', 'Dessert')], option_widget = widgets.CheckboxInput())
