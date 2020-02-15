@@ -7,7 +7,7 @@
   <div class="jumbotron pb-2 primary-dark p-text">
     <h1 class="display-4">Recipe Book</h1>
     <p class="lead">An online recipe book where you can post new recipes, and seach through posted recipes</p>
-    <hr class="my-4">
+    <hr class="white-background my-4">
     <p>Take a look around, post some content and get cooking!</p>
     <p class="lead text-center">
       <a class="btn s-text secondary-light secondary-light-hover btn-raised btn-lg" href="{{url_for('postrecipe')}}" role="button">Post a recipe!</a>
@@ -27,6 +27,7 @@
             
             <div class="d-flex flex-column xxs-pad px-3 pt-3 pb-1 card-body card-body-xs">
               <h5 class="pl-2 mb-2 card-title line-clamp card-title-xs">{{r.name.lower().title()}}</h5>
+              
               <p class="pl-2 xs-text">{{r.desc}}</p>
               
               
@@ -61,8 +62,10 @@
           <div class="image-square">
             <img class="card-img-top desktop-image image-fluid" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
           </div>
-          <div class="card-body text-center pb-1">
+          <div class="card-body text-center py-2">
+            <small class="d-none d-sm-block text-muted">Recipe by {{r.owner}}</small>
             <h5 class="card-title">{{r.name.lower().title()}}</h5>
+            
             <p class="mb-0">{{r.desc}}</p>
           </div>
           <!--card footer-->
