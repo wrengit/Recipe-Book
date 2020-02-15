@@ -56,16 +56,6 @@ $(document).ready(() => {
     .attr("autocomplete", "off") //stops browser autocomplete which messes up the form styling
     .attr("type", "search");
 
-  //https://stackoverflow.com/questions/895171/prevent-users-from-submitting-a-form-by-hitting-enter
-  //stops user from submitting form by pressing enter, unless
-  //in a text area or on a button. This was found to happen in testing
-  //when navigating add_recipe.html
-  $(document).on("keydown", ":input:not(textarea):not(:submit)", e => {
-    if (e.key == "Enter") {
-      e.preventDefault();
-    }
-  });
-
   //layout of the tags section in add_recipe.html requires divs to have different class
   //names. This function changes class names based on the window being resiez by user.
   //Initial class names are provided at the top of this file, outside the document.ready func.
