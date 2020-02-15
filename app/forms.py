@@ -50,4 +50,4 @@ class RecipeForm(FlaskForm):
 
 class SearchForm(FlaskForm):
     search = StringField('Search for ingredient', validators=[DataRequired('Enter an ingredient to search for')])
-    submit = SubmitField('Submit')
+    
