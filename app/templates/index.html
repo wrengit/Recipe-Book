@@ -132,9 +132,19 @@
                 <!--method-->
                 <h6 class="card-title pt-3 pl-lg-5">Method</h6>
                 <pre class="px-lg-5">{{r.method}}</pre>
+
+                <!--likebutton-->
+                {{r.likes|length}}
+              
+                {% if current_user.username in r.likes %}
+                <a href="/like/{{r._id}}" type="button" class="btn color-red"><i class="fas fa-heart"></i></a>
+                {% else %}
+                <a href="/like/{{r._id}}" type="button" class="btn"><i class="far fa-heart"></i></a>
+                {% endif %}
+                <!--button-->
                 {% if r.owner == current_user.username or current_user.is_admin %}
                 <hr>
-                <!--button-->
+                
                 <div class="text-center">
                   <a
                   href="{{url_for('editrecipe', id=(r._id))}}"
