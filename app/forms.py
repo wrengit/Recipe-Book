@@ -7,7 +7,7 @@ from wtforms import(
     SubmitField,
     TextAreaField,
     SelectMultipleField,
-    FieldList, 
+    FieldList,
     widgets
 )
 
@@ -46,6 +46,7 @@ class RecipeForm(FlaskForm):
     method = TextAreaField('Method', validators=[DataRequired('Detail the recipe method')])
     tags = SelectMultipleField(choices=[('Vegetarian', 'Vegetarian'), ('Vegan', 'Vegan'), ('Healthy', 'Healthy'), ('Snack', 'Snack'), ('Main', 'Main'), ('Dessert', 'Dessert')], option_widget = widgets.CheckboxInput())
     image = StringField('Add image link')
+    likes = StringField()
     submit = SubmitField('Post Recipe!')
 
 class SearchForm(FlaskForm):

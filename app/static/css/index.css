@@ -105,6 +105,14 @@ pre {
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
+.like:hover {
+  color: #ff0000;
+}
+.like-red,
+.like-red:focus {
+  color: #ff0000;
+}
+
 
 /*targets very specific small screen mobiles (iPhone 5 etc)*/
 @media (max-width: 330px) {

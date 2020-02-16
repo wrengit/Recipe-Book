@@ -67,6 +67,7 @@
             <h5 class="card-title">{{r.name.lower().title()}}</h5>
             
             <p class="mb-0">{{r.desc}}</p>
+            
           </div>
           <!--card footer-->
           <div class="card-footer p-1">
@@ -132,9 +133,19 @@
                 <!--method-->
                 <h6 class="card-title pt-3 pl-lg-5">Method</h6>
                 <pre class="px-lg-5">{{r.method}}</pre>
+
+                <!--likebutton-->
+                {% if current_user.username in r.likes %}
+                <button class="like-btn like like-red btn hvr-grow"  data-id={{r._id}} type="button" ><i class="fas fa-heart"></i></button>
+                {%else%}
+
+                <button class="like-btn like btn hvr-grow"  data-id={{r._id}} type="button" ><i class="fas fa-heart"></i></button>
+                {% endif %}
+                <span id="like-counter-{{r._id}}">{{r.likes|length}}</span>
+                <!--button-->
                 {% if r.owner == current_user.username or current_user.is_admin %}
                 <hr>
-                <!--button-->
+                
                 <div class="text-center">
                   <a
                   href="{{url_for('editrecipe', id=(r._id))}}"

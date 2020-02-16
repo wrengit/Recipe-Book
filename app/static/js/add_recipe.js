@@ -20,7 +20,6 @@ $(document).ready(() => {
     newLi
       .after()
       .html(
-       
         '<label for="ingredients-' +
           ing +
           '"></label>' +
