@@ -17,14 +17,14 @@
 
 @media (min-width: 992px) {
   .navpad {
-    padding-top: 95px;
+    padding-top: 105px;
   }
 
   #filter-check {
     width: 75%;
   }
   .navbar {
-    min-height: 95px;
+    min-height: 120px;
     padding-bottom: 0.5rem;
   }
   .navbar-brand {
