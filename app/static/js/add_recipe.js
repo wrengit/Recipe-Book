@@ -19,8 +19,7 @@ $(document).ready(() => {
     // autocomplete=off and type=search stop browser from messing with form style
     newLi
       .after()
-      .html(
-        '<button class="btn hvr-grow-btn"><i type="button" id="delete-'+ing+'" class="material-icons">minimize</i></button>' + 
+      .html( 
         '<label for="ingredients-' +
           ing +
           '"></label>' +
