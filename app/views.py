@@ -1,4 +1,4 @@
-from flask import render_template, redirect, flash, url_for, request
+from flask import render_template, redirect, flash, url_for, request, json
 from werkzeug.security import generate_password_hash
 from werkzeug.urls import url_parse
 from flask_login import login_user, logout_user, current_user, login_required
@@ -113,33 +113,34 @@ def editrecipe(id):
     search_form = SearchForm()
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(id)})
     # stops user editing recipes not owned by finding recipe id in source code
-    if current_user.username != recipe['owner']:
+    if current_user.username == recipe['owner'] or current_user.is_admin:
+        if request.method == "POST":
+            if form.validate_on_submit():
+                mongo.db.recipes.update_one({"_id": ObjectId(id)}, {"$set": {
+                    'name': form.recipe_name.data,
+                    'desc': form.recipe_desc.data,
+                    'ingredients': form.ingredients.data,
+                    'method': form.method.data,
+                    'tags': form.tags.data,
+                    'image': form.image.data,
+                    'owner': current_user.username
+                }})
+                flash('Recipe Updated')
+                return redirect(url_for('index'))
+            return render_template('add_recipe.html', form=form, search_form=search_form, title='Edit Recipe')
+        elif request.method == "GET":
+            # Populates recipe form with data from db
+            form.recipe_name.data = recipe['name']
+            form.recipe_desc.data = recipe['desc']
+            for ingredient in recipe['ingredients']:
+                form.ingredients.append_entry(data=ingredient)
+            form.method.data = recipe['method']
+            form.image.data = recipe['image']
+            form.tags.data = ', '.join(map(str, recipe['tags']))
+            return render_template('add_recipe.html', form=form, search_form=search_form, title='Edit Recipe')
         flash('Action not allowed')
         return redirect(url_for('index'))
-    if request.method == "POST":
-        if form.validate_on_submit():
-            mongo.db.recipes.update_one({"_id": ObjectId(id)}, {"$set": {
-                'name': form.recipe_name.data,
-                'desc': form.recipe_desc.data,
-                'ingredients': form.ingredients.data,
-                'method': form.method.data,
-                'owner': current_user.username,
-                'tags': form.tags.data,
-                'image': form.image.data
-            }})
-            flash('Recipe Updated')
-            return redirect(url_for('index'))
-        return render_template('add_recipe.html', form=form, search_form=search_form, title='Edit Recipe')
-    elif request.method == "GET":
-        # Populates recipe form with data from db
-        form.recipe_name.data = recipe['name']
-        form.recipe_desc.data = recipe['desc']
-        for ingredient in recipe['ingredients']:
-            form.ingredients.append_entry(data=ingredient)
-        form.method.data = recipe['method']
-        form.image.data = recipe['image']
-        form.tags.data = ', '.join(map(str, recipe['tags']))
-        return render_template('add_recipe.html', form=form, search_form=search_form, title='Edit Recipe')
+
 
 # Search for ingredients
 @app.route('/search_results/<ingredient>', methods=['GET', 'POST'])
@@ -155,15 +156,19 @@ def search_results(ingredient):
     return render_template('index.html', recipes=recipes, search_form=search_form)
 
 
-@app.route('/like/<id>')
+@app.route('/like/<id>', methods=['GET', 'POST'])
 def like(id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(id)})
-    if current_user.username not in recipe['likes']:
-        mongo.db.recipes.update_one({"_id": ObjectId(id)},
-            {'$push': {'likes': current_user.username}})
+    if current_user.is_authenticated:
+        if request.method == 'GET':
+            like_count = len(recipe['likes'])
+            return json.dumps({like_count})
+        if current_user.username not in recipe['likes']:
+            mongo.db.recipes.update_one({"_id": ObjectId(id)},
+                                        {'$push': {'likes': current_user.username}})
+            return json.dumps({'status': 'success'})
+        elif current_user.username in recipe['likes']:
+            mongo.db.recipes.update_one({"_id": ObjectId(id)},
+                                        {'$pull': {'likes': current_user.username}})
+            return json.dumps({'status': 'success'})
         return redirect(url_for('index'))
-    elif current_user.username in recipe['likes']:
-        mongo.db.recipes.update_one({"_id": ObjectId(id)},
-            {'$pull': {'likes': current_user.username}})
-        return redirect(url_for('index'))
-    return redirect(url_for('index'))
