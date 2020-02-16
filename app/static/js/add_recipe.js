@@ -19,7 +19,7 @@ $(document).ready(() => {
     // autocomplete=off and type=search stop browser from messing with form style
     newLi
       .after()
-      .html( 
+      .html(
         '<label for="ingredients-' +
           ing +
           '"></label>' +
