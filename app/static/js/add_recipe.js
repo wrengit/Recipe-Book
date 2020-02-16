@@ -20,7 +20,7 @@ $(document).ready(() => {
     newLi
       .after()
       .html(
-        '<button class="btn hvr-grow-btn"><i type="button" id="delete-'+ing+'" class="material-icons">minimize</i></button>' + 
+       
         '<label for="ingredients-' +
           ing +
           '"></label>' +
