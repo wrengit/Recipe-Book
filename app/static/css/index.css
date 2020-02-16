@@ -106,6 +106,9 @@ pre {
   -webkit-box-orient: vertical;
 }
 
+.color-red {
+  color:#ff0000;
+}
 /*targets very specific small screen mobiles (iPhone 5 etc)*/
 @media (max-width: 330px) {
   .xs-text {
