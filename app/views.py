@@ -35,7 +35,7 @@ def login():
                 next_page = url_for('index')
             return redirect(next_page)
         else:
-            flash('Invalid username or password')
+            flash('Wrong username or password', 'warning')
     return render_template('loginform.html', form=form, search_form=search_form)
 
 # Logout
@@ -60,7 +60,7 @@ def register():
             'password': pwhash,
             'is_admin': False
         })
-        flash('You are now registered')
+        flash('You are now registered', 'success')
         return redirect(url_for('login'))
     return render_template('register.html', form=form, search_form=search_form)
 
@@ -88,7 +88,7 @@ def postrecipe():
             'image': form.image.data,
             'likes': []
         })
-        flash('Recipe added!')
+        flash('Recipe added!', 'success')
         return redirect(url_for('index'))
     return render_template('add_recipe.html', form=form, search_form=search_form, title='Post Recipe')
 
@@ -100,7 +100,7 @@ def delete(id):
     # Only allows recipe owner or admin to delete recipe
     if current_user.username == recipe['owner'] or current_user.is_admin:
         mongo.db.recipes.delete_one({"_id": ObjectId(id)})
-        flash('Recipe Deleted')
+        flash('Recipe Deleted', 'success')
         return redirect(url_for('index'))
     flash('Action not allowed')
     return redirect(url_for('index'))
@@ -125,7 +125,7 @@ def editrecipe(id):
                     'image': form.image.data,
                     'owner': current_user.username
                 }})
-                flash('Recipe Updated')
+                flash('Recipe Updated', 'info')
                 return redirect(url_for('index'))
             return render_template('add_recipe.html', form=form, search_form=search_form, title='Edit Recipe')
         elif request.method == "GET":
@@ -138,7 +138,7 @@ def editrecipe(id):
             form.image.data = recipe['image']
             form.tags.data = ', '.join(map(str, recipe['tags']))
             return render_template('add_recipe.html', form=form, search_form=search_form, title='Edit Recipe')
-        flash('Action not allowed')
+        flash('Action not allowed', 'warning')
         return redirect(url_for('index'))
 
 
@@ -171,4 +171,5 @@ def like(id):
             mongo.db.recipes.update_one({"_id": ObjectId(id)},
                                         {'$pull': {'likes': current_user.username}})
             return json.dumps({'status': 'success'})
+        flash('Action not allowed', 'warning')
         return redirect(url_for('index'))
