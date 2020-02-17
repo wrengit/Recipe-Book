@@ -7,4 +7,6 @@ $(document).ready(() => {
       location.href = `/deleterecipe/${recipeId}`;
     }
   });
+
+  $("#flash").delay(4000).fadeOut();
 });
