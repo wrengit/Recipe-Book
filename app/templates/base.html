@@ -22,17 +22,11 @@
     <link rel="stylesheet" href="../static/css/errors.css"/>
     <link rel="stylesheet" href="../static/css/search.css"/>
     <title>{{title}}</title>
-    {% with messages = get_flashed_messages() %} {% if messages %}
-    <ul class="flashes">
-      {% for message in messages %}
-      <li>{{ message }}</li>
-      {% endfor %}
-    </ul>
-    {% endif %} {% endwith %}
+    
   </head>
   <body>
+  
     {% if self._TemplateReference__context.name not in ('/errors/404.html', '/errors/500.html') %}
-    
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
       <button
         class="navbar-toggler"
@@ -173,10 +167,19 @@
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
+    <script src="https://cdn.rawgit.com/FezVrasta/snackbarjs/1.1.0/dist/snackbar.min.js"></script>
     <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
     <script src="../static/js/base.js"></script>
     <script src="../static/js/add_recipe.js"></script>
     <script src="../static/js/index.js"></script>
     <script src="../static/js/like.js"></script>
+    
+    <div id="snackbar-container">
+      {% with messages = get_flashed_messages() %} {% if messages %}
+        {% for message in messages %}
+          <script>$.snackbar({content: "{{message}}"})</script>
+        {% endfor %}
+      {% endif %} {% endwith %}
+    </div>
   </body>
 </html>
