@@ -69,7 +69,8 @@ def register():
 def profile(username):
     search_form = SearchForm()
     recipes = mongo.db.recipes.find({"owner": current_user.username})
-    return render_template('profile.html', recipes=recipes, search_form=search_form)
+    liked_recipes = mongo.db.recipes.find({"likes": current_user.username})
+    return render_template('profile.html', recipes=recipes, search_form=search_form, liked_recipes=liked_recipes)
 
 # Post recipe
 @app.route('/postrecipe', methods=['GET', 'POST'])
