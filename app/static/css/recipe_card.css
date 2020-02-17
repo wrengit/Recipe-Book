@@ -113,6 +113,16 @@ pre {
   color: #ff0000;
 }
 
+/*alert box for flask flash messages*/
+
+#flash {
+  position: fixed;
+  top: 15vw;
+  z-index: 10;
+  left:50%;
+  transform: translate(-50%, 0);
+}
+
 
 /*targets very specific small screen mobiles (iPhone 5 etc)*/
 @media (max-width: 330px) {
