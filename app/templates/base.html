@@ -22,10 +22,14 @@
     <link rel="stylesheet" href="../static/css/errors.css"/>
     <link rel="stylesheet" href="../static/css/search.css"/>
     <title>{{title}}</title>
-    
   </head>
   <body>
-  
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{category}}" role="alert" id="flash">{{message}}</div>
+      {% endfor %}
+    {% endif %} {% endwith %}
+
     {% if self._TemplateReference__context.name not in ('/errors/404.html', '/errors/500.html') %}
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
       <button
@@ -155,7 +159,11 @@
     {{self._TemplateReference__context.name}}
     {% endif %}
     
-    {% block content %} {% endblock content %}
+  
+
+    {% block content %}
+    {% endblock content %}
+
     {% if self._TemplateReference__context.name not in ('/errors/404.html', '/errors/500.html') %}
     <footer>
       <div class="text-center py-3">© 2020 Copyright:
@@ -164,22 +172,21 @@
     </footer>
     {%endif%}
 
+    
+     
+  
+      
+    
+  </body>
+
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
-    <script src="https://cdn.rawgit.com/FezVrasta/snackbarjs/1.1.0/dist/snackbar.min.js"></script>
     <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
     <script src="../static/js/base.js"></script>
     <script src="../static/js/add_recipe.js"></script>
     <script src="../static/js/index.js"></script>
     <script src="../static/js/like.js"></script>
-    
-    <div id="snackbar-container">
-      {% with messages = get_flashed_messages() %} {% if messages %}
-        {% for message in messages %}
-          <script>$.snackbar({content: "{{message}}"})</script>
-        {% endfor %}
-      {% endif %} {% endwith %}
-    </div>
+   
   </body>
 </html>
