@@ -95,10 +95,31 @@
                 </button>
                 <div class="text-center">
                   <h1 class="modal-title">{{r.name.lower().title()}}</h1>
+                  <div class="d-flex flex row">
+
+                  </div>
                   <small class="text-muted">Recipe by {{r.owner}}</small>
+                  <!--likebutton-->
+                  
 
                   <p class="card-text pt-2 font-weight-light">{{r.desc}}</p>
                 </div>
+                <div class="text-center py-2">
+                  {% if current_user.is_authenticated %}
+                    {% if current_user.username in r.likes %}
+                    <button class="like-btn like like-red btn hvr-grow"  data-id={{r._id}} type="button" ><i class="fas fa-heart"></i></button>
+                    {%else%}
+                    <button class="like-btn like btn hvr-grow"  data-id={{r._id}} type="button" ><i class="fas fa-heart"></i></button>
+                    {% endif %}
+                  {% else %}
+                  <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Login to favourite a recipe">
+                    <i class="fas fa-heart"></i>
+                  </span>
+                  
+                  {% endif %}
+                  <span class="text-muted" id="like-counter-{{r._id}}">{{r.likes|length}}</span>
+                </div>
+                
                 
                 <hr>
                   <!--ingredients & large image-->
@@ -119,14 +140,9 @@
                 <h6 class="card-title pt-3 pl-lg-5">Method</h6>
                 <pre class="px-lg-5">{{r.method}}</pre>
 
-                <!--likebutton-->
-                {% if current_user.username in r.likes %}
-                <button class="like-btn like like-red btn hvr-grow"  data-id={{r._id}} type="button" ><i class="fas fa-heart"></i></button>
-                {%else%}
-
-                <button class="like-btn like btn hvr-grow"  data-id={{r._id}} type="button" ><i class="fas fa-heart"></i></button>
-                {% endif %}
-                <span id="like-counter-{{r._id}}">{{r.likes|length}}</span>
+                
+                
+               
                 <!--button-->
                 {% if r.owner == current_user.username or current_user.is_admin %}
                 <hr>
