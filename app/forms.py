@@ -50,5 +50,5 @@ class RecipeForm(FlaskForm):
     submit = SubmitField('Post Recipe!')
 
 class SearchForm(FlaskForm):
-    search = StringField('Search for ingredient', validators=[DataRequired('Enter an ingredient to search for')])
+    search = StringField('Search for ingredient', validators=[DataRequired('Enter an ingredient to search for')], render_kw={'aria-label':'search for ingredients'})
     
