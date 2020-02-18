@@ -15,7 +15,17 @@
   z-index: 0;
 }
 
+.logo {
+  width: 40vw;
+}
+@media(min-width: 768px){
+  .logo {
+    width: 15vw;
+  }
+}
+
 @media (min-width: 992px) {
+  
   .navpad {
     padding-top: 105px;
   }
