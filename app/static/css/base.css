@@ -6,6 +6,11 @@
   padding-top: 0;
   padding-bottom: 0;
 }
+
+.navbar-brand {
+  margin-right: 0;
+}
+
 .inline-icon {
   vertical-align: bottom;
   font-size: 1.5rem !important;
@@ -18,14 +23,13 @@
 .logo {
   width: 40vw;
 }
-@media(min-width: 768px){
+@media (min-width: 768px) {
   .logo {
     width: 15vw;
   }
 }
 
 @media (min-width: 992px) {
-  
   .navpad {
     padding-top: 105px;
   }
