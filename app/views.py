@@ -15,7 +15,7 @@ def index():
     recipes = mongo.db.recipes.find({})
     if request.method == 'POST':
         return redirect(url_for('search_results', ingredient=search_form.search.data))
-    return render_template('index.html', recipes=recipes, search_form=search_form)
+    return render_template('index.html', recipes=recipes, search_form=search_form, title='Home')
 
 # Login
 @app.route('/login', methods=['GET', 'POST'])
@@ -36,7 +36,7 @@ def login():
             return redirect(next_page)
         else:
             flash('Wrong username or password', 'warning')
-    return render_template('loginform.html', form=form, search_form=search_form)
+    return render_template('loginform.html', form=form, search_form=search_form, title='Login')
 
 # Logout
 @app.route('/logout')
@@ -62,7 +62,7 @@ def register():
         })
         flash('You are now registered', 'success')
         return redirect(url_for('login'))
-    return render_template('register.html', form=form, search_form=search_form)
+    return render_template('register.html', form=form, search_form=search_form, title='Register')
 
 # Profile route, displays recipes on profile page owned by user
 @app.route('/profile/<username>')
@@ -70,7 +70,7 @@ def profile(username):
     search_form = SearchForm()
     recipes = mongo.db.recipes.find({"owner": current_user.username})
     liked_recipes = mongo.db.recipes.find({"likes": current_user.username})
-    return render_template('profile.html', recipes=recipes, search_form=search_form, liked_recipes=liked_recipes)
+    return render_template('profile.html', recipes=recipes, search_form=search_form, liked_recipes=liked_recipes, title='Profile')
 
 # Post recipe
 @app.route('/postrecipe', methods=['GET', 'POST'])
@@ -150,11 +150,11 @@ def search_results(ingredient):
     recipes = list(mongo.db.recipes.find({'$text': {'$search': ingredient}}))
     if request.method == 'GET':
         if recipes:
-            return render_template('search_results.html', recipes=recipes, ingredient=ingredient, search_form=search_form)
-        return render_template('none_found.html', search_form=search_form)
+            return render_template('search_results.html', title='Search Results', recipes=recipes, ingredient=ingredient, search_form=search_form)
+        return render_template('none_found.html', search_form=search_form, title="No Recipes Found")
     elif request.method == 'POST':
         return redirect(url_for('search_results', ingredient=search_form.search.data))
-    return render_template('index.html', recipes=recipes, search_form=search_form)
+    return redirect(url_for('index'))
 
 
 @app.route('/like/<id>', methods=['GET', 'POST'])
