@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../static/images/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon-16x16.png" />
-    <link rel="manifest" href="..static/images/site.webmanifest" />
+    <link rel="manifest" href="../static/images/site.webmanifest" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"
@@ -53,7 +53,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <a class="navbar-brand" href="{{url_for('index')}}">Recipe Book</a>
+      <a class="navbar-brand" href="{{url_for('index')}}"><img class="logo" src="../static/images/logo.png"></a>
       <div class="navbar-nav mt-2 mt-lg-0 ml-lg-auto d-lg-none">
         {% if current_user.is_authenticated %}
         <a
