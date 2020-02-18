@@ -128,7 +128,7 @@ pre {
 }
 
 /*targets very specific small screen mobiles (iPhone 5 etc)*/
-@media (max-width: 330px) {
+@media (max-width: 380px) {
   .xs-text {
     font-size: 0.6rem;
   }
