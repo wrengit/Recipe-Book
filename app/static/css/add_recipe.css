@@ -1,27 +1,26 @@
-
 /*https://stackoverflow.com/questions/19303862/javascript-code-to-resize-textarea-with-animation-effect-on-focus-gain*/
 #method {
-    height:40px;
-    transition: all 0.5s;
-    -webkit-transition: all 0.5s;
+  height: 40px;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
 }
 #method:focus {
-    height:150px;
+  height: 150px;
 }
 
 .center-align {
-    min-height: 100%;
-    min-height: 100%vh;
-    display: flex;
-    align-items: center;
+  min-height: 100%;
+  min-height: 100%vh;
+  display: flex;
+  align-items: center;
 }
 
 #edit-post-recipe {
-    max-width: 800px;
-    margin-left: 0;
-    margin-right: 0;
+  max-width: 800px;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .error {
-    color:#ff0000;
+  color: #ff0000;
 }
