@@ -1,18 +1,19 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <main class="container navpad">
-    <section class="jumbotron pb-2 primary-dark p-text">
-        <p class="lead" id= "profile-jumbo-text">We didn't find any recipes with those ingredients</p>
-        <hr class="my-4 white-background" />
-        <p>Please try another search</p>
-        <p class="lead text-center">
-          <a
-            class="btn s-text secondary-light secondary-light-hover btn-raised btn-lg"
-            href="{{url_for('index')}}"
-            role="button"
-            >Return to main page</a
-          >
-        </p>
-      </section>
+  <section class="jumbotron pb-2 primary-dark p-text">
+    <p class="lead" id="profile-jumbo-text">
+      We didn't find any recipes with those ingredients
+    </p>
+    <hr class="my-4 white-background" />
+    <p>Please try another search</p>
+    <p class="lead text-center">
+      <a
+        class="btn s-text secondary-light secondary-light-hover btn-raised btn-lg"
+        href="{{url_for('index')}}"
+        role="button"
+        >Return to main page</a
+      >
+    </p>
+  </section>
 </main>
 {% endblock content %}

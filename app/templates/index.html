@@ -1,16 +1,22 @@
-{% extends 'base.html' %} 
-
-{% block content %} 
+{% extends 'base.html' %} {% block content %}
 
 <main class="container navpad">
   <!--jumbotron-->
   <section class="jumbotron pb-2 primary-dark p-text">
     <h1 class="display-4">Recipe Book</h1>
-    <p class="lead">An online recipe book where you can post new recipes, and seach through posted recipes</p>
-    <hr class="white-background my-4">
+    <p class="lead">
+      An online recipe book where you can post new recipes, and seach through
+      posted recipes
+    </p>
+    <hr class="white-background my-4" />
     <p>Take a look around, post some content and get cooking!</p>
     <p class="lead text-center">
-      <a class="btn s-text secondary-light secondary-light-hover btn-raised btn-lg" href="{{url_for('postrecipe')}}" role="button">Post a recipe!</a>
+      <a
+        class="btn s-text secondary-light secondary-light-hover btn-raised btn-lg"
+        href="{{url_for('postrecipe')}}"
+        role="button"
+        >Post a recipe!</a
+      >
     </p>
   </section>
   {% include 'partials/recipe_card.html' %}

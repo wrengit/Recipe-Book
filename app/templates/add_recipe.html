@@ -7,18 +7,14 @@
       </div>
       <!--Name/description section-->
       <div class="row justify-content-center">
-        
         <div class="col-10">
           {{ form.hidden_tag() }}
-          
-          
 
           <div class="form-group">
             {{form.recipe_name.label(class_="bmd-label-floating")}}
             {{form.recipe_name(class_="form-control", autocomplete="off",
             type="search")}} {% for error in form.recipe_name.errors %}
-            <span class="error">[{{error}}]</span>
-            {% endfor %}
+            <span class="error">[{{error}}]</span> {% endfor %}
             <small id="recipeNameHelp" class="bmd-help"
               >Enter the name of your recipe</small
             >
@@ -43,9 +39,7 @@
           id="main-ingredients-label")}} {{form.ingredients(class_="list-group
           list-group-flush align-item-center pr-5")}} {% for error in
           form.ingredients.errors %}
-          <small class="error"
-            >{{error}}</small
-          >
+          <small class="error">{{error}}</small>
           {% endfor %}
           <div class="row mt-5 justify-content-center">
             <div class="col-2 ml-4">
@@ -86,9 +80,7 @@
           {{form.method.label(class_="bmd-label-floating")}}
           {{form.method(class_="form-control", type="search")}} {% for error in
           form.method.errors %}
-          <span class="error"
-            >{{error}}</span
-          >
+          <span class="error">{{error}}</span>
           {% endfor %}
           <small id="methodHelp" class="bmd-help"
             >Enter the method. Please use the return/enter key between
@@ -108,9 +100,8 @@
       </div>
       <!--Submit button-->
       <div class="card-footer text-center primary-dark p-text mt-4">
-        
-          {{form.submit(class_="btn btn-raised secondary-light secondary-light-hover s-text")}}
-      
+        {{form.submit(class_="btn btn-raised secondary-light
+        secondary-light-hover s-text")}}
       </div>
     </div>
   </form>

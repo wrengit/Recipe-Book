@@ -3,7 +3,9 @@
   <!--jumbotron-->
   <section class="jumbotron pb-2 primary-dark p-text">
     <h1 class="display-4">Hello {{current_user.username}}</h1>
-    <p class="lead" id= "profile-jumbo-text">Take a look at your posted recipes below</p>
+    <p class="lead" id="profile-jumbo-text">
+      Take a look at your posted recipes below
+    </p>
     <hr class="my-4 white-background" />
     <p>Thanks for contributing!</p>
     <p class="lead text-center">
@@ -13,17 +15,21 @@
         role="button"
         >Return to main page</a
       >
-      
     </p>
     <p class="text-center">
-      <Button id="toggle-profile" class="btn s-text secondary-light secondary-light-hover btn-raised" type="button">Show Liked</Button>
-
+      <button
+        id="toggle-profile"
+        class="btn s-text secondary-light secondary-light-hover btn-raised"
+        type="button"
+      >
+        Show Liked
+      </button>
     </p>
   </section>
- 
+
   <div id="owned-recipes">
-    {% include 'partials/recipe_card.html' %} </div>
-  <div id="liked-recipes">{% include 'partials/liked_recipes.html' %} </div>
-  
+    {% include 'partials/recipe_card.html' %}
+  </div>
+  <div id="liked-recipes">{% include 'partials/liked_recipes.html' %}</div>
 </main>
 {% endblock content %}

@@ -14,24 +14,28 @@
       rel="stylesheet"
       href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    />
     <link rel="stylesheet" href="../static/css/base.css" />
     <link rel="stylesheet" href="../static/css/recipe_card.css" />
     <link rel="stylesheet" href="../static/css/add_recipe.css" />
-    <link rel="stylesheet" href="../static/css/theme.css"/>
-    <link rel="stylesheet" href="../static/css/errors.css"/>
-    <link rel="stylesheet" href="../static/css/search.css"/>
-    <link rel="stylesheet" href="../static/css/profile.css"/>
+    <link rel="stylesheet" href="../static/css/theme.css" />
+    <link rel="stylesheet" href="../static/css/errors.css" />
+    <link rel="stylesheet" href="../static/css/search.css" />
+    <link rel="stylesheet" href="../static/css/profile.css" />
     <title>{{title}}</title>
   </head>
   <body>
-    {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %}
-      {% for category, message in messages %}
-        <div class="alert alert-{{category}}" role="alert" id="flash">{{message}}</div>
-      {% endfor %}
-    {% endif %} {% endwith %}
-
-    {% if self._TemplateReference__context.name not in ('/errors/404.html', '/errors/500.html') %}
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %}
+    <div class="alert alert-{{category}}" role="alert" id="flash">
+      {{message}}
+    </div>
+    {% endfor %} {% endif %} {% endwith %} {% if
+    self._TemplateReference__context.name not in ('/errors/404.html',
+    '/errors/500.html') %}
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
       <button
         class="navbar-toggler"
@@ -80,10 +84,9 @@
             </div>
             <div class="col-12 col-lg-10 text-center px-0 pl-lg-auto">
               {% if self._TemplateReference__context.name not in
-              ('loginform.html', 'register.html', 'add_recipe.html')%} 
-                {% if self._TemplateReference__context.name not in ('profile.html')%}
-                  {% include 'partials/search.html' %}
-                {% endif %}
+              ('loginform.html', 'register.html', 'add_recipe.html')%} {% if
+              self._TemplateReference__context.name not in ('profile.html')%} {%
+              include 'partials/search.html' %} {% endif %}
             </div>
             <div class="row mx-auto pl-sm-5">
               <div class="col-4 col-lg-2 pl-lg-0">
@@ -98,7 +101,11 @@
               </div>
               <div class="col-4 col-lg-2">
                 <label class="checkbox-inline">
-                  <input type="checkbox" id="filter-check-vegan" value="Vegan" />
+                  <input
+                    type="checkbox"
+                    id="filter-check-vegan"
+                    value="Vegan"
+                  />
                   Vegan
                 </label>
               </div>
@@ -114,7 +121,11 @@
               </div>
               <div class="col-4 col-lg-2">
                 <label class="checkbox-inline">
-                  <input type="checkbox" id="filter-check-snack" value="Snack" />
+                  <input
+                    type="checkbox"
+                    id="filter-check-snack"
+                    value="Snack"
+                  />
                   Snack
                 </label>
               </div>
@@ -136,7 +147,6 @@
               </div>
               {% endif %}
             </div>
-            
           </div>
         </div>
 
@@ -159,30 +169,22 @@
         {% endif %}
       </div>
     </nav>
-    {{self._TemplateReference__context.name}}
-    {% endif %}
-    
-  
-
-    {% block content %}
-    {% endblock content %}
-
-    {% if self._TemplateReference__context.name not in ('/errors/404.html', '/errors/500.html') %}
+    {{self._TemplateReference__context.name}} {% endif %} {% block content %} {%
+    endblock content %} {% if self._TemplateReference__context.name not in
+    ('/errors/404.html', '/errors/500.html') %}
     <footer>
-      <div class="text-center py-3">© 2020 Copyright:
-        <a href="https://www.github.com/wrengit"> Design by wrenna <i class="material-icons">emoji_nature</i></a><br>
-        <small class="text-muted">Site owner is not responsible for any user content. Efforts will be made to remove gratuitous or inflammatory content.</small>
+      <div class="text-center py-3">
+        © 2020 Copyright:
+        <a href="https://www.github.com/wrengit">
+          Design by wrenna <i class="material-icons">emoji_nature</i></a
+        ><br />
+        <small class="text-muted"
+          >Site owner is not responsible for any user content. Efforts will be
+          made to remove gratuitous or inflammatory content.</small
+        >
       </div>
     </footer>
     {%endif%}
-
-    
-     
-  
-      
-    
-  </body>
-
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"></script>
@@ -192,6 +194,5 @@
     <script src="../static/js/recipe_card.js"></script>
     <script src="../static/js/like.js"></script>
     <script src="../static/js/profile.js"></script>
-   
   </body>
 </html>

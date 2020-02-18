@@ -7,7 +7,7 @@
     <div class="col-lg-6 col-md-8">
       <div class="card">
         <div class="card-body">
-          <form method='POST'>
+          <form method="POST">
             {{ form.hidden_tag() }}
             <div class="form-group">
               {{form.username.label(class_="bmd-label-floating")}}
@@ -27,7 +27,8 @@
               <small id="recipeDescHelp" class="bmd-help">Enter password</small>
             </div>
             <div>
-              {{form.login(class_="btn btn-raised primary primary-hover p-text")}}
+              {{form.login(class_="btn btn-raised primary primary-hover
+              p-text")}}
             </div>
           </form>
         </div>
@@ -36,16 +37,15 @@
 
     <p class="lead pt-3">Not registered? Click below</p>
     <div class="col-12 col-md-2">
-       <p class="lead">
+      <p class="lead">
         <a
-            class="btn s-text secondary-light secondary-light-hover btn-raised btn-lg"
-            href="{{url_for('register')}}"
-            role="button"
-            >Register</a
+          class="btn s-text secondary-light secondary-light-hover btn-raised btn-lg"
+          href="{{url_for('register')}}"
+          role="button"
+          >Register</a
         >
-        </p> 
+      </p>
     </div>
-        
   </section>
 </main>
 
