@@ -150,15 +150,10 @@
               <div class="card-footer">
                 <div class="d-flex flex-row justify-content-around">
                   {% for tag in r.tags %}
-    
                   <div class="d-flex flex-column text-center">
-                    
-                      <small class="primary-color-text"><i class="material-icons">done</i></small>
-                      <small class="text-muted">{{tag}}</small>
-                    
-                    
+                    <small class="primary-color-text"><i class="material-icons">done</i></small>
+                    <small class="text-muted">{{tag}}</small>       
                   </div>
-    
                 {% endfor %}
                 </div>
               </div>
@@ -167,6 +162,5 @@
       </article>
       
     </section>
-
     {%endfor%}
   </div>

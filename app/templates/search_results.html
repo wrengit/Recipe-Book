@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container navpad">
+<main class="container navpad">
   <!--jumbotron-->
-  <div class="jumbotron pb-2 primary-dark p-text">
+  <section class="jumbotron pb-2 primary-dark p-text">
     <h1 class="display-4">Showing search results for {{ingredient}}</h1>
     <p class="lead">Did you know you can search for multiple ingredients?</p>
     <hr class="my-4 white-background">
     <p class="lead text-center">
       <a class="btn s-text secondary-light secondary-light-hover btn-raised btn-lg" href="{{url_for('index')}}" role="button">Clear search</a>
     </p>
-  </div>
+  </section>
   {% include 'partials/recipe_card.html' %}
-</div>
+</main>
 {% endblock content %}
