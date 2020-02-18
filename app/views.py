@@ -15,7 +15,7 @@ def index():
     recipes = mongo.db.recipes.find({})
     if request.method == 'POST':
         return redirect(url_for('search_results', ingredient=search_form.search.data))
-    return render_template('index.html', recipes=recipes, search_form=search_form, title='Home')
+    return render_template('index.html', recipes=recipes, search_form=search_form, title='Recipe Book')
 
 # Login
 @app.route('/login', methods=['GET', 'POST'])
