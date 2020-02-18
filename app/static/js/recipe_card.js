@@ -8,5 +8,7 @@ $(document).ready(() => {
     }
   });
 
-  $("#flash").delay(4000).fadeOut();
+  $("#flash")
+    .delay(4000)
+    .fadeOut();
 });
