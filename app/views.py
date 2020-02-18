@@ -103,7 +103,7 @@ def delete(id):
         mongo.db.recipes.delete_one({"_id": ObjectId(id)})
         flash('Recipe Deleted', 'success')
         return redirect(url_for('index'))
-    flash('Action not allowed')
+    flash('Action not allowed', 'warning')
     return redirect(url_for('index'))
 
 # Edit recipe
