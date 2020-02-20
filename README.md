@@ -1,6 +1,6 @@
 # Recipe Book
 
-Milestone 3 project: Data-centric Development - Code Institute
+### Milestone 3 project: Data-centric Development - Code Institute
 
 An online recipe book where users can find, upload, edit and delete recipes. Backend made with python & flask.
 
@@ -8,7 +8,7 @@ An online recipe book where users can find, upload, edit and delete recipes. Bac
 
 ## Demo
 
-A link to the project hosted on Heroku can be found [here](HTTPS://wrengit-milestone3.herokuapp.com)
+A link to the project hosted on Heroku can be found [here](https://wrengit-milestone3.herokuapp.com)
 
 ## UX
 
@@ -137,38 +137,64 @@ Schemas for the two collections can be found below.
 
 ## Testing
 
+
+
+The site was tested with W3 html & css validators.
+Accessabilty was checked with .
+
+Friends and family were recruited as users, and encouraged to use the site and report any issues. 
+
+##### Functionality
+
+All links were tested, along with ensuring that forms filled successfully. Error testing was conducted to ensure the correct error fires, and gives suitable feedback to the user.
+HTML/CSS was validated.
+
+##### Usability
+
+Feedback was recieved from my tutor, Sindhu, and from friends and family regarding specific usabilty issues. When brought up, improvements were made to make using the site clearer and more consitant. 
+The site text was passed to a spell checker, and to an accessabilty [checker](https://wave.webaim.org/) to highlight contrast errors, ensure correct labels and titles, or small type fonts. 
+
+##### Interface
+
+Errors were tested by intentially entering incorrect information into the URL string, and passing bad information to the API.
+
+##### Compatabilty
+
 The site was developed on a Dell XPS 13 13" 2-in-1 touch screen laptop. Initial testing was conducted with Brave Browser, Microsoft Edge, and Chrome. Mobile testing used a Huawei P20 pro, using Brave, Chrome, and Firefox. There was no availability of Apple devices, either mobile or desktop to conduct testing.
 
 All testing was conducted manually.
 
-The site was tested with W3 html & css validators.
-Accessabilty was checked with https://wave.webaim.org/.
+Screen sizes were testing using the browser devtools, and tested down to iPhone 5 size to ensure the site stayed responsive.
+
+##### Security
+
+The site has been designed defensivly, such that a user may not access any part of the page with out the proper verfication. All CRUD operations to the DB were tested to ensure that editing url strings, and retrieving information (such as objectId's from the source code) could not be used to defeat the security measures.
 
 ### Issues
 
 Ocassionally, on mobile devices, the recipe card images slightly change width, or sequentially get narrower down the view. Refreshing the view resets the images to their proper size. This has not been able to be reliably produced, and so the cause is not determined.
-
-### Browser compatibility
-
-The app displays as expected on all browsers tested.
 
 ### User stories
 
 > As a user I want to be able to quickly and easily search for a recipe based on specified criteria (ingredients, vegetarian, etc)
 >
 > > The user can search for recipes based on included ingredients, and/or filter recipes by a series of tags to narrow down the right recipe. This is easily done, with the search and tags section prominently displayed at the top of the page, or in the navbar toggle menu on mobiles
-
+---
 > As a user I would like to be able to save or like recipes, so I can revisit them quickly next time I visit the site
 >
 > > The user may open a recipe, and if logged in, can like or favourite the recipe. The list of liked recipes can be found in the profile section for a user to quickly locate on return to the page
-
+---
 > As a user I want to post and share my own recipes for others to use. Getting 'likes' on my recipes would encourage me to post more
 >
 > > The user can post a recipe, once logged in, and the abilty to do so is clearly shown on the jumbotron on the index/home page. Users can see how many likes their recipe has recieved, which ensures that they contribute further to the site, and gives sense that other users are enjoying their content
-
+---
 > As a user I want to delete or edit my posted recipes, if I no longer wish them to be online, or have decided to change the method or ingredients
 >
 > > The user is able to easily edit or delete a recipe that they own, from within the recipe modal. This information is presented clearly at the bottom of the modal. Editing a recipe is easy, with the form prepopulated with the exisiting recipe information. To delete a recipe, the site will ask the user to confirm that they want to delete the recipe. This is to ensure a misplaced click does not delete content unneccasarily.
+
+### Accessabilty
+
+The site was passed to the WAVE accessabilty checker to ensure ARIA labels were in place, and to increase the contrast on hard to view elements. 
 
 ## Cloning & Deployment
 
