@@ -37,7 +37,7 @@
         <div class="col-12 col-md-7 mb-5 align-items-center">
           {{form.ingredients.label(class_="bmd-label-floating pl-5",
           id="main-ingredients-label")}} {{form.ingredients(class_="list-group
-          list-group-flush align-item-center pr-5")}} {% for error in
+          list-group-flush align-item-center mx-auto")}} {% for error in
           form.ingredients.errors %}
           <small class="error">{{error}}</small>
           {% endfor %}
@@ -52,9 +52,8 @@
               </button>
             </div>
             <div class="col-8 col-sm-7">
-              <small id="ingredientsHelp" class="form-text text-muted"
-                >Press the button to add an ingredient<br />
-                Remove the ingredient by deleting the text</small
+              <small id="ingredientsHelp" class="form-text text-muted py-2"
+                >Press the button to add an ingredient</small
               >
             </div>
           </div>
