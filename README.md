@@ -30,17 +30,20 @@ Schemas for the two collections can be found below.
 
 `users`
 
-``` {user
+``` 
+{user
         {_id: unique objectId}
         {name: username},
         {email: user@email.com},
         {password: hashed password},
         {is_admin: Boolean}
-    }```
+    }
+```
 
 `recipes`
 
-```{recipes
+```
+{recipes
         {_id: unique objectId}
         {name: recipe name},
         {desc: recipe description},
@@ -61,7 +64,8 @@ Schemas for the two collections can be found below.
             {username},
             {username},
             {username}
-        ]}```
+        ]}
+```
 
 
 ## Features
