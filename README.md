@@ -8,10 +8,17 @@ An online recipe book where users can find, upload, edit and delete recipes. Bac
 
 ## Demo
 
-A link to the project hosted on GitHub Pages can be found [here](https://wrengit-milestone3.herokuapp.com)
+A link to the project hosted on Heroku can be found [here](https://wrengit-milestone3.herokuapp.com)
 
 ## UX
 
+The UX was designed to be as clean and clutter free as possible. From experience, often when a user is searching for a recipe online, sites were found to contain too much information, and made finding the ingredients list or method cumbersome. The Material design philosophy was followed, drawing inspiration from the card and paper styles. 
+
+The colour scheme was obtained from the Material.io colour-picker tool, using two complimentary, but contrasting colours. 
+
+When a user selects a recipe, they are not navigated away from the main page. Instead a large modal contains all required information. Recipe cards show a title, large image, short recipe descirption and tags to indicate the type of recipe.
+
+A fixed navigation bar was chosen to ensure that users always had access to the tags filtering, to quickly locate a recipe that meets their needs. Recipes can also be searched over by ingredient(s), which also allow tag filtering. 
 
 ## Comments
 
@@ -20,9 +27,16 @@ A link to the project hosted on GitHub Pages can be found [here](https://wrengit
 
 ### Existing Features
 
-
+- Full text search of recipe ingredients
+- Filtering of recipies based on a selection of 'tags'
+- Favouriting, or liking a recipe to save to profile page for future reference. This also serves to show the popularity of a recipe to help users decide
+- Adding, editing and deleting of user recipes
 
 ### Features Left to Implement
+
+- Upgrade ingredient text search to rank results based on matching ingredients. Currently the search will return all recipes that contain the search field. If a user searches for two ingredients (a + b), and recipe 1 contains a, whilst recipe 2 contains a + b, then the results should display recipe 2 first
+- Add abilty to sort recipes by 'like' rating
+- Add abilty to change user password, and potentially email user if password has been forgot
 
 
 ## Technologies Used
@@ -37,12 +51,13 @@ A link to the project hosted on GitHub Pages can be found [here](https://wrengit
 - HTML
 - CSS
 - Bootstrap - Material Design by fezvrasta (https://fezvrasta.github.io/bootstrap-material-design/)
-- JavaScript
+- Bootstrap
+- Material Icons
 - Font Awesome
 - Google Fonts
+- JavaScript
 - PopperJS
 - jQuery
-- Boot swatch
 
 ## Services Used
 
@@ -58,16 +73,29 @@ The site was developed on a Dell XPS 13 13" 2-in-1 touch screen laptop. Initial 
 All testing was conducted manually.
 
 The site was tested with W3 html & css validators.
+Accessabilty was checked with https://wave.webaim.org/.
 
 ### Browser compatibility
 
+The app displays as expected on all browsers tested. 
 
 ### User stories
 
-> As a user....
+> As a user I want to be able to quickly and easily search for a recipe based on specified criteria (ingredients, vegetarian, etc)
 >
-> > The user....
+> > The user can search for recipes based on included ingredients, and/or filter recipes by a series of tags to narrow down the right recipe. This is easily done, with the search and tags section prominently displayed at the top of the page, or in the navbar toggle menu on mobiles
 
+> As a user I would like to be able to save or like recipes, so I can revisit them quickly next time I visit the site
+>
+> > The user may open a recipe, and if logged in, can like or favourite the recipe. The list of liked recipes can be found in the profile section for a user to quickly locate on return to the page
+
+> As a user I want to post and share my own recipes for others to use. Getting 'likes' on my recipes would encourage me to post more
+>
+> > The user can post a recipe, once logged in, and the abilty to do so is clearly shown on the jumbotron on the index/home page. Users can see how many likes their recipe has recieved, which ensures that they contribute further to the site, and gives sense that other users are enjoying their content
+
+> As a user I want to delete or edit my posted recipes, if I no longer wish them to be online, or have decided to change the method or ingredients
+>
+> > The user is able to easily edit or delete a recipe that they own, from within the recipe modal. This information is presented clearly at the bottom of the modal. Editing a recipe is easy, with the form prepopulated with the exisiting recipe information. To delete a recipe, the site will ask the user to confirm that they want to delete the recipe. This is to ensure a misplaced click does not delete content unneccasarily.
 
 ## Cloning & Deployment
 
@@ -101,12 +129,15 @@ The site can be cloned to a local repository by the following steps (GitHub guid
 
 ### Deployment
 
+The site is deployed on Heroku, on the free tier. This has limited dynos and is intended to simply show the site functioning. This free tier is not for production ready use. 
+
+The site is deployed by linking the main GitHub repository master branch to Heroku. The environment variables are entered on the app settings. These include the MONGO_URI, and flask SECRET_KEY.
 
 ## Credits
 
 ### Content
 
-All code was written by me (wrenna). Recipes and user content was written by me, and friends and family.
+All code is written by me (wrenna). Recipes and user content are by me, friends, family and other users.
 
 ### Media
 
