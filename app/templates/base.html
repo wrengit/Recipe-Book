@@ -47,11 +47,19 @@
   </head>
   <body>
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
-    messages %} {% for category, message in messages %}
-    <div class="alert alert-{{category}}" role="alert" id="flash">
-      {{message}}
+    messages %} {% for category, Message in messages %}
+    {% if category == "message"%}
+    <div class="alert alert-info" role="alert" id="flash">
+      {{Message}}
     </div>
-    {% endfor %} {% endif %} {% endwith %} {% if
+    {%else%}
+    <div class="alert alert-{{category}}" role="alert" id="flash">
+      {{Message}}
+    </div>
+    {% endif %}
+    
+    {% endfor %} {% endif %} {% endwith %} 
+    {% if
     self._TemplateReference__context.name not in ('/errors/404.html',
     '/errors/500.html') %}
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
