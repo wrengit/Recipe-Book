@@ -23,6 +23,11 @@
 .logo {
   width: 40vw;
 }
+
+#filter-check {
+  margin-left: 5vw !important;
+}
+
 @media (min-width: 768px) {
   .logo {
     width: 15vw;
