@@ -24,10 +24,6 @@
   width: 40vw;
 }
 
-#filter-check {
-  margin-left: 5vw !important;
-}
-
 @media (min-width: 768px) {
   .logo {
     width: 15vw;
@@ -41,6 +37,7 @@
 
   #filter-check {
     width: 75%;
+    margin-left: 7vw;
   }
   .navbar {
     min-height: 120px;
