@@ -20,7 +20,48 @@ When a user selects a recipe, they are not navigated away from the main page. In
 
 A fixed navigation bar was chosen to ensure that users always had access to the tags filtering, to quickly locate a recipe that meets their needs. Recipes can also be searched over by ingredient(s), which also allow tag filtering. 
 
-## Comments
+## DB Schema
+
+MongoDB Atlas was chosen as the DB to allow change to be made the the DB schema in future, if upgrading or changing the site. The server is cloud based to ensure continuous uptime, and to allow the recipes to persist on Heroku, which periodically restarts their servers, removing any locally stored content. 
+
+There are two collection in the DB. These are the 'users' collection and the 'recipes' collection. 
+
+Schemas for the two collections can be found below.
+
+`users`
+
+``` {user
+        {_id: unique objectId}
+        {name: username},
+        {email: user@email.com},
+        {password: hashed password},
+        {is_admin: Boolean}
+    }```
+
+`recipes`
+
+```{recipes
+        {_id: unique objectId}
+        {name: recipe name},
+        {desc: recipe description},
+        {ingredients [
+            {ingredient string field},
+            {ingredient string field},
+            { ... }
+            ]},
+        {method: recipe method},
+        {owner: recipe owner (username)},
+        {tags [
+            {tag},
+            {tag}, 
+            {tag}
+        ]},
+        {image: url to image location},
+        {likes: [
+            {username},
+            {username},
+            {username}
+        ]}```
 
 
 ## Features
@@ -28,9 +69,20 @@ A fixed navigation bar was chosen to ensure that users always had access to the 
 ### Existing Features
 
 - Full text search of recipe ingredients
-- Filtering of recipies based on a selection of 'tags'
-- Favouriting, or liking a recipe to save to profile page for future reference. This also serves to show the popularity of a recipe to help users decide
+
+   Sumbitting the search field will search the DB recipes ingredients field for all matching words. Common words, such as 'and', 'of', etc are ommited from the search and will not return any results
+
+- Filtering of recipes based on a selection of 'tags'
+
+   The user is presented with 6 'tags' when posting a recipe. These allow filtering of the recipes to narrow down recipes that other users may or may not be interested in
+
+- Favouriting, or liking a recipe to save to profile page for future reference
+
+   This serves to show the popularity of a recipe to help users decide, as a form of peer review. This feature also gives content creators feedback on their content, inspiring them to post more
+   
 - Adding, editing and deleting of user recipes
+
+   Users have full control over their recipes, with only the user able to edit or delete their own recipes
 
 ### Features Left to Implement
 
