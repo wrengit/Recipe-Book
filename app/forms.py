@@ -11,7 +11,9 @@ from wtforms import(
     widgets
 )
 
-
+# Userlogin form.
+# Uses flask-wtf to model the form. Validators provided by wtforms perform server side validation
+# of entered fields.
 class UserLoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired('Enter your Username')])
     password = PasswordField('Password', validators=[DataRequired('Enter your Password')])
@@ -26,19 +28,26 @@ class UserRegistrationForm(FlaskForm):
                                      DataRequired('Please re-type your Password'), EqualTo('password')])
     register = SubmitField('Register')
 
+    # Check the db to ensure that the username is not already taken. !important as usernames are
+    # used as the unique identifier for session managment
     def validate_username(self, username):
         user = mongo.db.users.find_one({'username': username.data})
         if user is not None:
             raise ValidationError(
                 'Username is taken. Please select a different Username')
 
+    # Checks is user has already registered using email address.
     def validate_email(self, email):
         user = mongo.db.users.find_one({'email': email.data})
         if user is not None:
             raise ValidationError(
                 'You have already registered! Please login!')
 
-
+# Recipe form.
+# Has validators for 'DataRequired' and max length for certain fields. This is to ensure that information is
+# presented on recipe cards properly. 'render_kw' renders the form fields with additional attributes for styling
+# 'tags' field offers the user a selection of predefines choices, and 'option_widgit' makes form render as
+# checkboxes, rather than a mutiple select list.
 class RecipeForm(FlaskForm):
     recipe_name = StringField('Recipe name', validators=[DataRequired('Enter a recipe name'), Length(max=30, message='Your recipe name is too long! Keeep it short and sweet!')])
     recipe_desc = TextAreaField('Description', validators=[DataRequired('Give a short recipe description'), Length(max=100, message='Maximum description length is %(max)d chars')])
