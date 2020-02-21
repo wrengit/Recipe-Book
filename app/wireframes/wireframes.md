@@ -1,6 +1,9 @@
 # Wireframes for Recipe Book
 
-![wireframes](wireframe1.pdf)
+![wireframes](wireframe1-1.jpg)
+![wireframes](wireframe1-2.jpg)
+![wireframes](wireframe1-3.jpg)
+![wireframes](wireframe1-4.jpg)
 
 ## Main home/index page
 
@@ -16,7 +19,9 @@ Similar to the desktop view, a Jumbo tron will display page information. A searc
 
 Upon selecting a recipe, a full screen modal will show additional recipe information.
 
-![wireframe](wireframe2.pdf)
+![wireframes](wireframe2-1.jpg)
+![wireframes](wireframe2-2.jpg)
+
 
 ## Profile page
 
