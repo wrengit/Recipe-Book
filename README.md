@@ -22,7 +22,7 @@ A fixed navigation bar was chosen to ensure that users always had access to the 
 
 ## Wireframes
 
-A link to the wireframe can be found [here](https://github.com/wrengit/milestone3/blob/master/app/wireframes/wireframes.md)
+A link to the wireframe can be found [here](https://github.com/wrengit/milestone3/blob/master/wireframes/wireframes.md)
 
 ## Code
 
