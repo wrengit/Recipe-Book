@@ -19,8 +19,8 @@ Similar to the desktop view, a Jumbo tron will display page information. A searc
 
 Upon selecting a recipe, a full screen modal will show additional recipe information.
 
-![wireframes](wireframe2-1.jpg)
-![wireframes](wireframe2-2.jpg)
+![wireframes](wireframes2-1.jpg)
+![wireframes](wireframes2-2.jpg)
 
 
 ## Profile page
