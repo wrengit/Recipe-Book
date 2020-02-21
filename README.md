@@ -27,7 +27,7 @@ Whilst flask extensions, such as Flask-wtf and Flask-login, made integrating for
 
 Flask-login requires the use of a 'User' model, which uses a ORM/DRM to define the schema. I initially used MongoEngine as an ORM. Whilst trying to implement features, I found that MongoEngine was not active and not being worked on to update with the latest MongoDB updates. 
 
-I found the Flask-wtf and wtform documentation very difficult to grasp, and found implementing custom widgets to render additional form areas and HTML classes too complicated. To work round this, the site uses JS to add buttons, classes, and change layouts after the page has initially loaded. This feels a bit 'hacky', and is noticeable to the end user when a form, particularly the edit/post recipe form, loads.
+I found the Flask-wtf and wtforms documentation very difficult to grasp, and found implementing custom widgets to render additional form areas and HTML classes too complicated. To work round this, the site uses JS to add buttons, classes, and change layouts after the page has initially loaded. This feels a bit 'hacky', and is noticeable to the end user when a form, particularly the edit/post recipe form, loads.
 
 
 ## DB Schema
@@ -84,7 +84,7 @@ Schemas for the two collections can be found below.
 
 - Full text search of recipe ingredients
 
-  Sumbitting the search field will search the DB recipes ingredients field for all matching words. Common words, such as 'and', 'of', etc are ommited from the search and will not return any results
+  Submitting the search field will search the DB recipes ingredients field for all matching words. Common words, such as 'and', 'of', etc are omitted from the search and will not return any results
 
 - Filtering of recipes based on a selection of 'tags'
 
@@ -104,43 +104,44 @@ Schemas for the two collections can be found below.
 
    Currently the search will return all recipes that contain the search field. If a user searches for two ingredients (a + b), and recipe 1 contains a, whilst recipe 2 contains a + b, then the results should display recipe 2 first
 
-- Add abilty to sort recipes by 'like' rating
+- Add ability to sort recipes by 'like' rating
 
-- Add abilty to change user password, and potentially email user if password has been forgot
+- Add ability to change user password, and potentially email user if password has been forgot
+
+## Languages
+
+- **Python**
+- **JavaScript**
+- **HTML**
+- **CSS**
 
 ## Technologies Used
 
-- Python
-- Flask
-- MongoDB
-- PyMongo
-- Flask-wtf
-- Flask-login
-- Gunicorn
-- HTML
-- CSS
-- Bootstrap - Material Design by fezvrasta (https://fezvrasta.github.io/bootstrap-material-design/)
-- Bootstrap
-- Material Icons
-- Font Awesome
-- Google Fonts
-- JavaScript
-- PopperJS
-- jQuery
+- [Pipenv](https://pipenv.readthedocs.io/en/latest/) - Package manager with virtual envs
+- [Flask](https://flask.palletsprojects.com/en/1.1.x/) - Python web framework
+- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - Cloud based MongoDB server
+- [PyMongo](https://api.mongodb.com/python/current/) - Tools for working with MongoDb from Flask
+- [Flask-wtf](https://flask-wtf.readthedocs.io/en/stable/) - Integration of Flask and WTForms
+- [Flask-login](https://flask-login.readthedocs.io/en/latest/) - User session management for Flask
+- [Gunicorn](https://gunicorn.org/) - WSGI HTTP server
+- [Bootstrap MD](https://fezvrasta.github.io/bootstrap-material-design/) - Material Design by fezvrasta
+- [Bootstrap](https://getbootstrap.com/) - Frontend component library
+- [PopperJS](https://popper.js.org/) - Tooltip and popover library
+- [jQuery](https://jquery.com/) - DOM manipulation library
 
 ## Services Used
 
-- Tinypng - image compression
-- Unsplash - image repository
-- favicon.io - favicon & logo generator
-- Material.io - Material design colour picker
+- [Tinypng](https://tinypng.com/) - image compression
+- [Unsplash](https://unsplash.com/) - image repository
+- [favicon.io](https://favicon.io/) - favicon & logo generator
+- [Material color tool](https://material.io/resources/color/#!/?view.left=0&view.right=0) - Material design colour picker
+- [Material Icons](https://material.io/resources/icons/?style=baseline) - Material design Icons from Google
+- [Font Awesome](https://fontawesome.com/) - Huge selection of icons
+- [Google Fonts](https://fonts.google.com/) - Fonts by Google
 
 ## Testing
 
-
-
-The site was tested with W3 html & css validators.
-Accessabilty was checked with .
+The site was tested with W3 HTML & CSS validators.
 
 Friends and family were recruited as users, and encouraged to use the site and report any issues. 
 
@@ -151,14 +152,14 @@ HTML/CSS was validated.
 
 ##### Usability
 
-Feedback was recieved from my tutor, Sindhu, and from friends and family regarding specific usabilty issues. When brought up, improvements were made to make using the site clearer and more consitant. 
-The site text was passed to a spell checker, and to an accessabilty [checker](https://wave.webaim.org/) to highlight contrast errors, ensure correct labels and titles, or small type fonts. 
+Feedback was received from my tutor, Sindhu, and from friends and family regarding specific usability issues. When brought up, improvements were made to make using the site clearer and more consistent. 
+The site text was passed to a spell checker, and to an accessibility [checker](https://wave.webaim.org/) to highlight contrast errors, ensure correct labels and titles, or small type fonts. 
 
 ##### Interface
 
-Errors were tested by intentially entering incorrect information into the URL string, and passing bad information to the API.
+Errors were tested by intentionally entering incorrect information into the URL string, and passing bad information to the API.
 
-##### Compatabilty
+##### Compatibility
 
 The site was developed on a Dell XPS 13 13" 2-in-1 touch screen laptop. Initial testing was conducted with Brave Browser, Microsoft Edge, and Chrome. Mobile testing used a Huawei P20 pro, using Brave, Chrome, and Firefox. There was no availability of Apple devices, either mobile or desktop to conduct testing.
 
@@ -168,11 +169,11 @@ Screen sizes were testing using the browser devtools, and tested down to iPhone 
 
 ##### Security
 
-The site has been designed defensivly, such that a user may not access any part of the page with out the proper verfication. All CRUD operations to the DB were tested to ensure that editing url strings, and retrieving information (such as objectId's from the source code) could not be used to defeat the security measures.
+The site has been designed defensively, such that a user may not access any part of the page with out the proper verification. All CRUD operations to the DB were tested to ensure that editing url strings, and retrieving information (such as objectId's from the source code) could not be used to defeat the security measures.
 
 ### Issues
 
-Ocassionally, on mobile devices, the recipe card images slightly change width, or sequentially get narrower down the view. Refreshing the view resets the images to their proper size. This has not been able to be reliably produced, and so the cause is not determined.
+Occasionally, on mobile devices, the recipe card images slightly change width, or sequentially get narrower down the view. Refreshing the view resets the images to their proper size. This has not been able to be reliably produced, and so the cause is not determined.
 
 ### User stories
 
@@ -186,15 +187,15 @@ Ocassionally, on mobile devices, the recipe card images slightly change width, o
 ---
 > As a user I want to post and share my own recipes for others to use. Getting 'likes' on my recipes would encourage me to post more
 >
-> > The user can post a recipe, once logged in, and the abilty to do so is clearly shown on the jumbotron on the index/home page. Users can see how many likes their recipe has recieved, which ensures that they contribute further to the site, and gives sense that other users are enjoying their content
+> > The user can post a recipe, once logged in, and the ability to do so is clearly shown on the jumbotron on the index/home page. Users can see how many likes their recipe has received, which ensures that they contribute further to the site, and gives sense that other users are enjoying their content
 ---
 > As a user I want to delete or edit my posted recipes, if I no longer wish them to be online, or have decided to change the method or ingredients
 >
-> > The user is able to easily edit or delete a recipe that they own, from within the recipe modal. This information is presented clearly at the bottom of the modal. Editing a recipe is easy, with the form prepopulated with the exisiting recipe information. To delete a recipe, the site will ask the user to confirm that they want to delete the recipe. This is to ensure a misplaced click does not delete content unneccasarily.
+> > The user is able to easily edit or delete a recipe that they own, from within the recipe modal. This information is presented clearly at the bottom of the modal. Editing a recipe is easy, with the form prepopulated with the existing recipe information. To delete a recipe, the site will ask the user to confirm that they want to delete the recipe. This is to ensure a misplaced click does not delete content unnecessarily.
 
-### Accessabilty
+### Accessibility
 
-The site was passed to the WAVE accessabilty checker to ensure ARIA labels were in place, and to increase the contrast on hard to view elements. 
+The site was passed to the WAVE accessibility checker to ensure ARIA labels were in place, and to increase the contrast on hard to view elements. 
 
 ## Cloning & Deployment
 
@@ -242,9 +243,10 @@ Further information detailing alternative methods to deploy to Heroku can be fou
 
 Comments in the code detail where code snippets have been used, often from Stack Overflow. URL links have been provided to the original content to compare. 
 
-Special credit goes to Miguel Grinberg. The 'flask mega tutorial' blog series ([found here](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)) was invaluable in teaching me the intracacies of flask, and its capabilites.
+Special credit goes to Miguel Grinberg. The 'flask mega tutorial' blog series ([found here](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)) was invaluable in teaching me the intricacies of flask, and its capabilities.
 
-Without this resouce I would have struggled to build this wep app (Recipe Book). While every endeavour was made to write my own python for this app, there will inevitably be some similarites in the code. If I encountered a problem, I intially tried to find a solution through web searches, before turning back to the flask mega tutorial for further guidance.
+Without this resource I would have struggled to build this web app (Recipe Book). While every endeavorer was made to write my own python for this app, there will inevitably be some similarities in the code. If I encountered a problem, I initially tried to find a solution through web searches, before turning back to the flask mega tutorial for further guidance.
+The file separation and structure were heavily influenced by Miguel Grinberg.
 
 ### Content
 
@@ -252,4 +254,4 @@ All code is written by me (wrenna). Recipes and user content are by me, friends,
 
 ### Media
 
-Recipe images (by wrenna) are from [Unsplash](http://unsplash.com), a royalty free, free to use image repository. Photographer credits for the images are below. Users have the abilty to link to web images.
+Recipe images (by wrenna) are from [Unsplash](http://unsplash.com), a royalty free, free to use image repository. Photographer credits for the images are below. Users have the ability to link to web images.
