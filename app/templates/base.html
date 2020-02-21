@@ -6,6 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <!--favicons-->
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -24,10 +25,12 @@
       href="../static/images/favicon-16x16.png"
     />
     <link rel="manifest" href="../static/images/site.webmanifest" />
+    <!--fonts and icons import-->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"
     />
+    <!--css stylesheets-->
     <link
       rel="stylesheet"
       href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
@@ -45,7 +48,12 @@
     <link rel="stylesheet" href="../static/css/profile.min.css" />
     <title>{{title}}</title>
   </head>
+
   <body>
+    <!--flask flahsed messaged are access here. Uses the message catagory to 
+    style the alert box. Flask-login flashes a message which does not have a category
+    this is provided with the internal 'if' statment, giving flask-login messages
+    an 'info' category-->
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
     messages %} {% for category, Message in messages %}
     {% if category == "message"%}
@@ -59,9 +67,13 @@
     {% endif %}
     
     {% endfor %} {% endif %} {% endwith %} 
+
+    <!--'if' below checks which template is being rendered, and excludes the navbar
+    on the error pages-->
     {% if
     self._TemplateReference__context.name not in ('/errors/404.html',
     '/errors/500.html') %}
+    <!--navbar-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
       <button
         class="navbar-toggler"
@@ -111,6 +123,9 @@
               {% endif %}
             </div>
             <div class="col-12 col-lg-10 text-center px-0 pl-lg-auto">
+              <!--'if' checks that current rendered template is not loginform, register or add_recipe
+              These templates have no use for the ingredient search and tags filtering, so are ommited
+              when on these pages. -->
               {% if self._TemplateReference__context.name not in
               ('loginform.html', 'register.html', 'add_recipe.html')%} {% if
               self._TemplateReference__context.name not in ('profile.html')%} {%
@@ -178,9 +193,10 @@
           </div>
         </div>
 
-        <!--https://stackoverflow.com/questions/11157631/how-to-get-file-name-of-current-template-inside-jinja2-template-->
       </div>
       <div class="navbar-nav mt-2 mt-lg-0 ml-lg-auto d-none d-lg-block">
+       <!--checks if user is logged in and displays the logout/login links repectively
+        if user us logged in, changes the style of the account circle to indicate-->
         {% if current_user.is_authenticated %}
         <a
           class="nav-link text-center"
@@ -197,8 +213,13 @@
         {% endif %}
       </div>
     </nav>
-    {{self._TemplateReference__context.name}} {% endif %} {% block content %} {%
-    endblock content %} {% if self._TemplateReference__context.name not in
+    {% endif %} 
+
+    {% block content %} 
+    {% endblock content %} 
+    
+    <!--footer. Excluded if users is on an HTTP error page-->
+    {% if self._TemplateReference__context.name not in
     ('/errors/404.html', '/errors/500.html') %}
     <footer>
       <div class="text-center py-3">
@@ -206,7 +227,7 @@
         <a href="https://www.github.com/wrengit">
           Design by wrenna <i class="material-icons">emoji_nature</i></a
         ><br />
-        <small class="text-muted"
+        <small class="text-muted px-2"
           >Site owner is not responsible for any user content. Efforts will be
           made to remove gratuitous or inflammatory content.</small
         >
@@ -214,6 +235,7 @@
     </footer>
     {%endif%}
 
+    <!--scripts-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
     <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"></script>
@@ -223,4 +245,5 @@
     <script src="../static/js/like.min.js"></script>
     <script src="../static/js/profile.min.js"></script>
   </body>
+  
 </html>
