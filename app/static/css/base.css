@@ -1,5 +1,7 @@
+/* styling for base.html*/
+
 .navpad {
-  padding-top: 50px;
+  padding-top: 65px;
 }
 
 .navbar {
@@ -30,9 +32,11 @@
   }
 }
 
+/*https://bootstrapious.com/p/how-to-change-bootstrap-navbar-height*/
+
 @media (min-width: 992px) {
   .navpad {
-    padding-top: 105px;
+    padding-top: 135px;
   }
 
   #filter-check {
@@ -49,7 +53,6 @@
     line-height: 100px;
   }
   .navbar-toggle {
-    /* (80px - button height 34px) / 2 = 23px */
     margin-top: 33px;
 
     padding: 9px 10px !important;
@@ -62,4 +65,4 @@
   }
 }
 
-/*https://bootstrapious.com/p/how-to-change-bootstrap-navbar-height*/
+
