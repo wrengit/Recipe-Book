@@ -9,9 +9,9 @@ app = Flask(__name__)
 
 app.config.from_object(Config)
 login = LoginManager(app)
-login.login_view = 'login'
-app.config['MONGO_URI'] = Config.MONGO_URI
-mongo = PyMongo(app)
+login.login_view = 'login' # Flask-login uses url_for to get url for the login page
+app.config['MONGO_URI'] = Config.MONGO_URI #Gets MONGO_URI string from config object
+mongo = PyMongo(app) # Initializes Pymongo
 
 
 from app import views, users, errors
