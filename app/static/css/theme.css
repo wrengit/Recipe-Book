@@ -1,3 +1,6 @@
+/* sets a theme based of Material design. Primary and secondary colours can be changed
+in this file to change all colors across the site */
+
 .primary {
   background-color: #009688;
 }

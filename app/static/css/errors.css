@@ -1,3 +1,5 @@
+/* styling for error pages */
+
 .http-error {
   background-image: url("../images/http_error.jpg");
   height: 100vh;

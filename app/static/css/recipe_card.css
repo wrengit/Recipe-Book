@@ -1,3 +1,5 @@
+/* styling for recipe_card.html */
+
 body {
   height: 100vh;
 }
@@ -81,6 +83,8 @@ pre {
     0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
+/* hvr-grow from css.hover */
+
 .hvr-grow {
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
@@ -101,6 +105,7 @@ pre {
 }
 
 /* https://css-tricks.com/line-clampin/ */
+/* makes long titles cut of in an ellipsis */
 .line-clamp {
   overflow: hidden;
   text-overflow: ellipsis;
