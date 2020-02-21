@@ -134,7 +134,7 @@ Schemas for the two collections can be found below.
 
 ## Services Used
 
-- [Tinypng](https://tinypng.com/) - image compression
+- [Compress or Die](https://compress-or-die.com/) - amazing image compression tool
 - [Unsplash](https://unsplash.com/) - image repository
 - [favicon.io](https://favicon.io/) - favicon & logo generator
 - [Material color tool](https://material.io/resources/color/#!/?view.left=0&view.right=0) - Material design colour picker
