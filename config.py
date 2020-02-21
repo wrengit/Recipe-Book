@@ -5,5 +5,5 @@ if path.exists("env.py"):
     
 class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    DEBUG = True
+    DEBUG = False
     MONGO_URI = os.environ.get('MONGO_URI')
