@@ -5,6 +5,8 @@ $(document).ready(() => {
       return this.text(this.text() == b ? a : b);
     }
   });
+
+  // toggles the liked and owned recipes on the profile.html page.
   $("#toggle-profile").on("click", function() {
     $(this).toggleText("Show Liked", "Show Owned");
     $("#profile-jumbo-text").toggleText(

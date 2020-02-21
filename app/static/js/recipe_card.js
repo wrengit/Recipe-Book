@@ -8,6 +8,7 @@ $(document).ready(() => {
     }
   });
 
+  //makes flashed messages fadeout after 4 seconds
   $("#flash")
     .delay(4000)
     .fadeOut();
