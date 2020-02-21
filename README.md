@@ -20,6 +20,9 @@ When a user selects a recipe, they are not navigated away from the main page. In
 
 A fixed navigation bar was chosen to ensure that users always had access to the tags filtering, to quickly locate a recipe that meets their needs. Recipes can also be searched over by ingredient(s), which also allow tag filtering.
 
+## Wireframes
+
+A link to the wireframe can be found [here](https://github.com/wrengit/milestone3/blob/master/app/wireframes/wireframes.md)
 
 ## Code
 
