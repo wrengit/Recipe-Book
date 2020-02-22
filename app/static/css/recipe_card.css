@@ -144,4 +144,7 @@ pre {
   .xxs-pad {
     padding: 0.25rem !important;
   }
+  #tags-container label {
+    font-size: 0.8rem;
+  }
 }
