@@ -10,7 +10,7 @@ a separate partials file.-->
 
       <!--xs recipe card layout-->
       <article class="card card-xs my-1 d-sm-none">
-          <a data-toggle="modal" data-target=".{{r._id}}">
+          <a data-toggle="modal" data-target=".{{r._id}}liked">
               <div class="d-flex flex-row ">
                   <img class="mobile-image" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
                   <div class="d-flex flex-column xxs-pad px-3 pt-3 pb-1 card-body card-body-xs">
@@ -31,7 +31,7 @@ a separate partials file.-->
 
       <!--standard recipe card layout-->
       <article class="card my-1 d-none d-sm-block hvr-grow">
-          <a data-toggle="modal" data-target=".{{r._id}}">
+          <a data-toggle="modal" data-target=".{{r._id}}liked">
               <!--https://stackoverflow.com/questions/980855/inputting-a-default-
           image-in-case-the-src-attribute-of-an-html-img-is-not-vali-->
               <div class="image-square">
@@ -57,7 +57,7 @@ a separate partials file.-->
       </article>
 
       <!--recipe modal-->
-      <article class="modal fade {{r._id}}" tabindex="-1" role="dialog" aria-hidden="true">
+      <article class="modal fade {{r._id}}liked" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-dialog modal-lg">
               <div class="modal-content">
                   <img class="card-img-top image-fluid d-lg-none" src="{{r.image}}" onerror="if (this.src != '../static/images/imagefallback.jpg') this.src = '../static/images/imagefallback.jpg';" alt="Image of recipe">
