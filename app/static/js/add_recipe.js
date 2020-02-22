@@ -39,7 +39,7 @@ $(document).ready(() => {
   //by wtforms. onclick removes the button's parent element, the li item.
   function addDeleteButton(li) {
     $(
-      "<button class='btn btn-sm' type='button'><i class='material-icons mx-auto'>delete_outline</i></button>"
+      "<button class='btn btn-sm delete-ingredient' type='button'><i class='material-icons mx-auto'>delete_outline</i></button>"
     ).insertBefore($(li));
   }
 
