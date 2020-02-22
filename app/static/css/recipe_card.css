@@ -132,6 +132,10 @@ pre {
   transform: translate(-50%, 0);
 }
 
+.delete-ingredient {
+  margin-right: 1rem !important;
+}
+
 /*targets very specific small screen mobiles (iPhone 5 etc)*/
 @media (max-width: 374px) {
   .xs-text {
