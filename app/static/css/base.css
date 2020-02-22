@@ -25,6 +25,10 @@
 .logo {
   width: 40vw;
 }
+.btn.btn-raised:focus,
+.btn.btn-raised:hover {
+  z-index: 0;
+}
 
 @media (min-width: 768px) {
   .logo {
@@ -64,5 +68,3 @@
     width: 65%;
   }
 }
-
-
