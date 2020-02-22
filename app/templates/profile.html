@@ -3,11 +3,20 @@
   <!--jumbotron-->
   <section class="jumbotron pb-2 primary-dark p-text">
     <h1 class="display-4">Hello {{current_user.username}}</h1>
+    {% if recipes.count() == 0 %}
+    <p class="lead" id="profile-jumbo-text">
+      It looks like you have not posted any recipes yet
+    </p>
+    <hr class="my-4 white-background" />
+    <p>What are you waiting for? Get posting!</p>
+    {% else %}
     <p class="lead" id="profile-jumbo-text">
       Take a look at your posted recipes below
     </p>
     <hr class="my-4 white-background" />
     <p>Thanks for contributing!</p>
+    {% endif %}
+    
     <p class="lead text-center">
       <a
         class="btn s-text secondary-light secondary-light-hover btn-raised btn-lg"
