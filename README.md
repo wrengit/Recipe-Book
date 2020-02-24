@@ -67,7 +67,7 @@ Schemas for the two collections can be found below.
 
 `users`
 
-```json
+```
 {user
     {_id: unique objectId},
     {name: username},
@@ -79,7 +79,7 @@ Schemas for the two collections can be found below.
 
 `recipes`
 
-```json
+```
 {recipes
     {_id: unique objectId},
     {name: recipe name},
