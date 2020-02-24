@@ -47,7 +47,7 @@ Adds a User model for Flask-login.
 This file contains the majority of the routes used in the app. Comments are given above each route to explain the function and reasoning.
 
 **__init.py__**
-This file initialises the Flak application, and configures the app and it's modules. The `views.py`, `users.py`, and `errors.py` are imported here, after the app has been declared.
+This file initialises the Flask application, and configures the app and it's modules. The `views.py`, `users.py`, and `errors.py` are imported here, after the app has been declared.
 
 #### Comments
 
