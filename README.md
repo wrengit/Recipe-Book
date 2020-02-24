@@ -8,7 +8,7 @@ An online recipe book where users can find, upload, edit and delete recipes. Bac
 
 ## Demo
 
-A link to the project hosted on Heroku can be found [here](https://wrengit-milestone3.herokuapp.com)
+A link to the project hosted on Heroku can be found [here](https://wrengit-recipe-book.herokuapp.com)
 
 ## UX
 
