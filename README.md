@@ -1,6 +1,6 @@
 # Recipe Book
 
-### Milestone 3 project: Data-centric Development - Code Institute
+## Milestone 3 project: Data-centric Development - Code Institute
 
 An online recipe book where users can find, upload, edit and delete recipes. Backend made with python & flask.
 
@@ -26,12 +26,36 @@ A link to the wireframe can be found [here](https://github.com/wrengit/milestone
 
 ## Code
 
-Whilst flask extensions, such as Flask-wtf and Flask-login, made integrating forms and a user management system easier, it often felt like I was fighting against them. Notable issues included support for using Flask-login with a NoSQL db being fairly absent. 
+### Configuration file structure
 
-Flask-login requires the use of a 'User' model, which uses a ORM/DRM to define the schema. I initially used MongoEngine as an ORM. Whilst trying to implement features, I found that MongoEngine was not active and not being worked on to update with the latest MongoDB updates. 
+The file structure is broken down to ensure each .py file serves a single purpose.
+
+**wsgi.py**
+Launches the application, and contains no other information aside the `app` import.
+The app configuaration is saved in an object, `Config`, which imports the `SECRET_KEY` and `MONGO_URI` from the environment variables. This information is loaded into the settings on the Heroku app when deploying, as the EnvVar are not pushed to the git respository. Thie `Config` object also sets the `debug` value.
+
+**errors.py**
+Contains the routes to the HTTP 404 and 500 errors.
+
+**forms.py**
+Manages the form models created for Flask-wtf and Flask-login.
+
+**users.py**
+Adds a User model for Flask-login.
+
+**view.py**
+This file contains the majority of the routes used in the app. Comments are given above each route to explain the function and reasoning.
+
+**__init.py__**
+This file initialises the Flak application, and configures the app and it's modules. The `views.py`, `users.py`, and `errors.py` are imported here, after the app has been declared.
+
+#### Comments
+
+Whilst flask extensions, such as Flask-wtf and Flask-login, made integrating forms and a user management system easier, it often felt like I was fighting against them. Notable issues included support for using Flask-login with a NoSQL db being fairly absent.
+
+Flask-login requires the use of a 'User' model, which uses a ORM/DRM to define the schema. I initially used MongoEngine as an ORM. Whilst trying to implement features, I found that MongoEngine was not active and not being worked on to update with the latest MongoDB updates.
 
 I found the Flask-wtf and wtforms documentation very difficult to grasp, and found implementing custom widgets to render additional form areas and HTML classes too complicated. To work round this, the site uses JS to add buttons, classes, and change layouts after the page has initially loaded. This feels a bit 'hacky', and is noticeable to the end user when a form, particularly the edit/post recipe form, loads.
-
 
 ## DB Schema
 
@@ -43,7 +67,7 @@ Schemas for the two collections can be found below.
 
 `users`
 
-```
+```json
 {user
     {_id: unique objectId},
     {name: username},
@@ -55,7 +79,7 @@ Schemas for the two collections can be found below.
 
 `recipes`
 
-```
+```json
 {recipes
     {_id: unique objectId},
     {name: recipe name},
@@ -146,23 +170,23 @@ Schemas for the two collections can be found below.
 
 The site was tested with W3 HTML & CSS validators.
 
-Friends and family were recruited as users, and encouraged to use the site and report any issues. 
+Friends and family were recruited as users, and encouraged to use the site and report any issues.
 
-##### Functionality
+### Functionality
 
 All links were tested, along with ensuring that forms filled successfully. Error testing was conducted to ensure the correct error fires, and gives suitable feedback to the user.
 HTML/CSS was validated.
 
-##### Usability
+### Usability
 
-Feedback was received from my tutor, Sindhu, and from friends and family regarding specific usability issues. When brought up, improvements were made to make using the site clearer and more consistent. 
-The site text was passed to a spell checker, and to an accessibility [checker](https://wave.webaim.org/) to highlight contrast errors, ensure correct labels and titles, or small type fonts. 
+Feedback was received from my tutor, Sindhu, and from friends and family regarding specific usability issues. When brought up, improvements were made to make using the site clearer and more consistent.
+The site text was passed to a spell checker, and to an accessibility [checker](https://wave.webaim.org/) to highlight contrast errors, ensure correct labels and titles, or small type fonts.
 
-##### Interface
+#### Interface
 
 Errors were tested by intentionally entering incorrect information into the URL string, and passing bad information to the API.
 
-##### Compatibility
+### Compatibility
 
 The site was developed on a Dell XPS 13 13" 2-in-1 touch screen laptop. Initial testing was conducted with Brave Browser, Microsoft Edge, and Chrome. Mobile testing used a Huawei P20 pro, using Brave, Chrome, and Firefox. There was no availability of Apple devices, either mobile or desktop to conduct testing.
 
@@ -170,7 +194,7 @@ All testing was conducted manually.
 
 Screen sizes were testing using the browser devtools, and tested down to iPhone 5 size to ensure the site stayed responsive.
 
-##### Security
+#### Security
 
 The site has been designed defensively, such that a user may not access any part of the page with out the proper verification. All CRUD operations to the DB were tested to ensure that editing url strings, and retrieving information (such as objectId's from the source code) could not be used to defeat the security measures.
 
@@ -198,7 +222,7 @@ Occasionally, on mobile devices, the recipe card images slightly change width, o
 
 ### Accessibility
 
-The site was passed to the WAVE accessibility checker to ensure ARIA labels were in place, and to increase the contrast on hard to view elements. 
+The site was passed to the WAVE accessibility checker to ensure ARIA labels were in place, and to increase the contrast on hard to view elements.
 
 ## Cloning & Deployment
 
@@ -220,7 +244,7 @@ The site can be cloned to a local repository by the following steps (GitHub guid
 
 - Press Enter. Your local clone will be created.
 
-```
+```Bash
 
 > Cloning into `Spoon-Knife`...
 > remote: Counting objects: 10, done.
@@ -244,7 +268,7 @@ Further information detailing alternative methods to deploy to Heroku can be fou
 
 ### Guides and resources
 
-Comments in the code detail where code snippets have been used, often from Stack Overflow. URL links have been provided to the original content to compare. 
+Comments in the code detail where code snippets have been used, often from Stack Overflow. URL links have been provided to the original content to compare.
 
 Special credit goes to Miguel Grinberg. The 'flask mega tutorial' blog series ([found here](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)) was invaluable in teaching me the intricacies of flask, and its capabilities.
 
