@@ -1,7 +1,5 @@
 # Recipe Book
 
-## Milestone 3 project: Data-centric Development - Code Institute
-
 An online recipe book where users can find, upload, edit and delete recipes. Backend made with python & flask.
 
 ![App on multiple screens](multiscreen.jpg)
