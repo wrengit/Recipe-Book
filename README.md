@@ -1,6 +1,6 @@
 # Recipe Book
 
-An online recipe book where users can find, upload, edit and delete recipes. Backend made with python & flask.
+An online recipe book where users can find, upload, edit and delete recipes. Made with flask.
 
 ![App on multiple screens](multiscreen.jpg)
 
